@@ -1,7 +1,7 @@
 <?php
 $dsn = 'mysql:host=localhost;dbname=raid_planner';
-$username = 'root'; //change to your username (student ID)
-$password = ''; //change to your password (ssh password)
+$username = 'root';
+$password = '';
 $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
 
 try {

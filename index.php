@@ -12,7 +12,7 @@ require('model/product_db.php');
 $cat_id = 2;
 
 // Get the products
-$products = get_products_by_category($cat_id);
+$product = get_products_by_category($cat_id);
 
 /***************************************
  * Delete a product
