@@ -1,5 +1,5 @@
 -- Create the raid_planner database
--- DROP DATABASE IF EXISTS raid_planner;
+DROP DATABASE IF EXISTS raid_planner;
 CREATE DATABASE raid_planner;
 USE raid_planner;  -- MySQL command
 
@@ -7,7 +7,7 @@ USE raid_planner;  -- MySQL command
 CREATE TABLE team (
   teamID       INT(11)        NOT NULL   AUTO_INCREMENT,
   teamName     VARCHAR(255)   NOT NULL,
-  PRIMARY KEY (teamID),
+  PRIMARY KEY (teamID)
 );
 
 CREATE TABLE raid (
