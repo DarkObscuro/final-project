@@ -1,12 +1,18 @@
-<?php
+<?php 
 require('util/main.php');
-
-require('model/database.php');
-require('model/player_db.php');
-
-$player_ID = 1;
-$player = get_player($player_ID);
-
-
-include 'home.php';
-?>
+include 'view/header.php'; ?>
+<main>
+    <h1>Menu</h1>
+    <ul>
+        <li>
+            <a href="controller/manager">Manager</a>
+        </li>
+        <li>
+            <a href="controller/statistics">Statistics</a>
+        </li>
+        <li>
+            <a href="controller/timetable">Timetable</a>
+        </li>
+    </ul>
+</main>
+<?php include 'view/footer.php'; ?>

@@ -4,11 +4,9 @@
 <head>
     <title>Raid Planner</title>
     <link rel="stylesheet" type="text/css"
-          href="../main.css">
+          href="../util/main.css">
 </head>
 
 <!-- the body section -->
 <body>
 <header><h1>Raid Planner</h1></header>
-
-
