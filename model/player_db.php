@@ -89,7 +89,7 @@ $player_Title, $player_FC) {
     }
 }
 
-function delete_product($player_ID) {
+function delete_player($player_ID) {
     global $db;
     $query = 'DELETE FROM player WHERE playerID = :player_ID';
     try {

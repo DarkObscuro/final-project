@@ -40,7 +40,7 @@ function add_team($team_ID, $team_Name) {
                  (teamID, teamName)
               VALUES
                  (:team_ID, :team_Name)';
-    try {0
+    try {
         $statement = $db->prepare($query);
         $statement->bindValue(':team_ID', $team_ID);
         $statement->bindValue(':team_Name', $team_Name);
@@ -75,7 +75,7 @@ function update_team($team_ID, $team_Name) {
     }
 }
 
-function delete_product($team_ID) {
+function delete_team($team_ID) {
     global $db;
     $query = 'DELETE FROM team WHERE teamID = :team_ID';
     try {
