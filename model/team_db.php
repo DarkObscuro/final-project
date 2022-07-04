@@ -1,11 +1,11 @@
 <?php
-function get_player_by_pseudo($pseudo) {
+function get_team_by_name($name) {
     global $db;
-    $query = 'SELECT * FROM player
-              WHERE playerPseudo = :pseudo';
+    $query = 'SELECT * FROM team
+              WHERE teamName = :name';
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':pseudo', $pseudo);
+        $statement->bindValue(':name', $name);
         $statement->execute();
         $result = $statement->fetchAll();
         $statement->closeCursor();
@@ -16,14 +16,14 @@ function get_player_by_pseudo($pseudo) {
     }
 }
 
-function get_player($player_id) {
+function get_team($team_ID) {
     global $db;
     $query = 'SELECT *
-              FROM player
-              WHERE playerID = :player_id';
+              FROM team
+              WHERE teamID = :team_ID';
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':player_id', $player_id);
+        $statement->bindValue(':team_ID', $team_ID);
         $statement->execute();
         $result = $statement->fetch();
         $statement->closeCursor();
@@ -34,52 +34,38 @@ function get_player($player_id) {
     }
 }
 
-function add_player($player_ID, $player_Pseudo, $player_Job,
-        $player_Title, $player_FC) {
+function add_team($team_ID, $team_Name) {
     global $db;
-    $query = 'INSERT INTO player
-                 (playerID, playerPseudo, playerJob,
-                 playerTitle, playerFC)
+    $query = 'INSERT INTO team
+                 (teamID, teamName)
               VALUES
-                 (:player_ID, :player_Pseudo, :player_Job, :player_Title,
-                  :player_FC)';
-    try {
+                 (:team_ID, :team_Name)';
+    try {0
         $statement = $db->prepare($query);
-        $statement->bindValue(':player_ID', $player_ID);
-        $statement->bindValue(':player_Pseudo', $player_Pseudo);
-        $statement->bindValue(':player_Job', $player_Job);
-        $statement->bindValue(':player_Title', $player_Title);
-        $statement->bindValue(':player_FC', $player_FC);
+        $statement->bindValue(':team_ID', $team_ID);
+        $statement->bindValue(':team_Name', $team_Name);
         $statement->execute();
         $statement->closeCursor();
 
         // Get the last product ID that was automatically generated
-        $player_ID = $db->lastInsertId();
-        return $player_ID;
+        $team_ID = $db->lastInsertId();
+        return $team_ID;
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
         display_db_error($error_message);
     }
 }
 
-function update_player($player_ID, $team_ID, $player_Pseudo, $player_Job,
-$player_Title, $player_FC) {
+function update_team($team_ID, $team_Name) {
     global $db;
-    $query = 'UPDATE player
-              SET teamID = :team_ID,
-                  playerPseudo = :player_Pseudo,
-                  playerJob = :player_Job,
-                  playerTitle = :player_Title,
-                  playerFC = :player_FC
-              WHERE playerID = :player_ID';
+    $query = 'UPDATE team
+              SET teamName = :team_Name,
+                  playerPseudo = :player_Pseudo
+              WHERE teamID = :team_ID';
     try {
         $statement = $db->prepare($query);
+        $statement->bindValue(':team_Name', $team_Name);
         $statement->bindValue(':team_ID', $team_ID);
-        $statement->bindValue(':player_Pseudo', $player_Pseudo);
-        $statement->bindValue(':player_Job', $player_Job);
-        $statement->bindValue(':player_Title', $player_Title);
-        $statement->bindValue(':player_FC', $player_FC);
-        $statement->bindValue(':player_ID', $player_ID);
         $row_count = $statement->execute();
         $statement->closeCursor();
         return $row_count;
@@ -89,12 +75,12 @@ $player_Title, $player_FC) {
     }
 }
 
-function delete_product($player_ID) {
+function delete_product($team_ID) {
     global $db;
-    $query = 'DELETE FROM player WHERE playerID = :player_ID';
+    $query = 'DELETE FROM team WHERE teamID = :team_ID';
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':player_ID', $player_ID);
+        $statement->bindValue(':team_ID', $team_ID);
         $row_count = $statement->execute();
         $statement->closeCursor();
         return $row_count;

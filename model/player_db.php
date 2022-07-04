@@ -16,14 +16,14 @@ function get_player_by_pseudo($pseudo) {
     }
 }
 
-function get_player($player_id) {
+function get_player($player_ID) {
     global $db;
     $query = 'SELECT *
               FROM player
-              WHERE playerID = :player_id';
+              WHERE playerID = :player_ID';
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':player_id', $player_id);
+        $statement->bindValue(':player_ID', $player_ID);
         $statement->execute();
         $result = $statement->fetch();
         $statement->closeCursor();
