@@ -17,17 +17,18 @@ function get_raid($raid_ID) {
     }
 }
 
-function add_raid($raid_ID, $team_ID, $raid_Date) {
+function add_raid($raid_ID, $team_ID, $raid_Date, $raid_Duration) {
     global $db;
     $query = 'INSERT INTO raid
-                 (raidID, teamID, raidDate)
+                 (raidID, teamID, raidDate, raidDuration)
               VALUES
-                 (:raid_ID, :team_ID, :raid_Date)';
+                 (:raid_ID, :team_ID, :raid_Date, :raid_Duration)';
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':raid_ID', $raid_ID);
         $statement->bindValue(':team_ID', $team_ID);
         $statement->bindValue(':raid_Date', $raid_Date);
+        $statement->bindValue(':raid_Duration', $raid_Duration);
         $statement->execute();
         $statement->closeCursor();
 
@@ -40,16 +41,18 @@ function add_raid($raid_ID, $team_ID, $raid_Date) {
     }
 }
 
-function update_raid($raid_ID, $team_ID, $raid_Date) {
+function update_raid($raid_ID, $team_ID, $raid_Date, $raid_Duration) {
     global $db;
     $query = 'UPDATE raid
               SET teamID = :team_ID,
-                  raidDate = :raid_Date
+                  raidDate = :raid_Date,
+                  raidDuration = :raid_Duration,
               WHERE raidID = :raid_ID';
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':team_ID', $team_ID);
         $statement->bindValue(':raid_Date', $raid_Date);
+        $statement->bindValue(':raid_Duration', $raid_Duration);
         $statement->bindValue(':raid_ID', $raid_ID);
         $row_count = $statement->execute();
         $statement->closeCursor();

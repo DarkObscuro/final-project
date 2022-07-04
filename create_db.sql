@@ -14,6 +14,7 @@ CREATE TABLE raid (
   raidID        INT(11)        NOT NULL   AUTO_INCREMENT,
   teamID        INT(11)        NOT NULL,
   raidDate      DATETIME       NOT NULL,
+  raidDuration  DECIMAL(10,2)  NOT NULL,
   PRIMARY KEY (raidID)
 );
 
