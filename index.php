@@ -9,7 +9,7 @@ require('model/product_db.php');
  **********************************************/
 
 // Sample data
-$cat_id = 1;
+$cat_id = 2;
 
 // Get the products
 $products = get_products_by_category($cat_id);
