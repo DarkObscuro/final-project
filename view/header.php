@@ -2,13 +2,13 @@
 <html>
 <!-- the head section -->
 <head>
-    <title>My Guitar Shop</title>
+    <title>Raid Planner</title>
     <link rel="stylesheet" type="text/css"
           href="../main.css">
 </head>
 
 <!-- the body section -->
 <body>
-<header><h1>My Guitar Shop</h1></header>
+<header><h1>Raid Planner</h1></header>
 
 
