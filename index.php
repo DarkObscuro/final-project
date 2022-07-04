@@ -8,10 +8,10 @@ include 'view/header.php'; ?>
             <a href="controller/manager">Manager</a>
         </li>
         <li>
-            <a href="controller/statistics">Statistics</a>
+            <a href="controller/timetable">Timetable</a>
         </li>
         <li>
-            <a href="controller/timetable">Timetable</a>
+            <a href="controller/statistics">Statistics</a>
         </li>
     </ul>
 </main>
