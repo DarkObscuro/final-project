@@ -1,4 +1,19 @@
 <?php
+function get_teams() {
+    global $db;
+    $query = 'SELECT * FROM team';
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
 function get_team_by_name($name) {
     global $db;
     $query = 'SELECT * FROM team
@@ -34,15 +49,14 @@ function get_team($team_ID) {
     }
 }
 
-function add_team($team_ID, $team_Name) {
+function add_team($team_Name) {
     global $db;
     $query = 'INSERT INTO team
-                 (teamID, teamName)
+                 (teamName)
               VALUES
-                 (:team_ID, :team_Name)';
+                 (:team_Name)';
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':team_ID', $team_ID);
         $statement->bindValue(':team_Name', $team_Name);
         $statement->execute();
         $statement->closeCursor();
