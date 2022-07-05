@@ -48,11 +48,11 @@ CREATE TABLE player (
 );
 
 CREATE TABLE raid_boss (
-   raidID        INT(11)        NOT NULL,
-   bossID        INT(11)        NOT NULL,
-   FOREIGN KEY (raidID) references raid(raidID),
-   FOREIGN KEY (bossID) references boss(bossID),
-   PRIMARY KEY CLUSTERED (raidID, bossID)
+  raidID        INT(11)        NOT NULL,
+  bossID        INT(11)        NOT NULL,
+  FOREIGN KEY (raidID) references raid(raidID),
+  FOREIGN KEY (bossID) references boss(bossID),
+  PRIMARY KEY CLUSTERED (raidID, bossID)
 );
 
 -- insert data into the database
