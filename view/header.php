@@ -4,7 +4,7 @@
 <head>
     <title>Raid Planner</title>
     <link rel="stylesheet" type="text/css"
-          href="../util/main.css">
+          href="../../public/main.css">
 </head>
 
 <!-- the body section -->

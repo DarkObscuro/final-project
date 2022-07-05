@@ -17,9 +17,9 @@ if ($action == 'menu') {
 } else if ($action == 'player_manager') {
     include('players.php');
 } else if ($action == 'team_manager') {
-    include('raids.php');
+    include('teams.php');
 } else if ($action == 'raid_manager') {
-    include('teams.php');    
+    include('raids.php');    
 } 
 
 ?>
