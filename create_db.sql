@@ -29,13 +29,11 @@ CREATE TABLE difficulty (
 CREATE TABLE boss (
   bossID          INT(11)      NOT NULL   AUTO_INCREMENT,
   difficultyID    INT(11)      NOT NULL,
-  raidID          INT(11),
   bossName        VARCHAR(255) NOT NULL,
   bossHP          INT,
   bossScale       INT,
   PRIMARY KEY (bossID),
-  FOREIGN KEY (difficultyID) references difficulty(difficultyID),
-  FOREIGN KEY (raidID) references raid(raidID)
+  FOREIGN KEY (difficultyID) references difficulty(difficultyID)
 );
 
 CREATE TABLE player (
@@ -53,9 +51,9 @@ CREATE TABLE raid_boss (
    raidID        INT(11)        NOT NULL,
    bossID        INT(11)        NOT NULL,
    FOREIGN KEY (raidID) references raid(raidID),
-   FOREIGN KEY (teamID) references team(teamID),
-   PRIMARY KEY CLUSTERED (raidID,teamID)
-)
+   FOREIGN KEY (bossID) references boss(bossID),
+   PRIMARY KEY CLUSTERED (raidID, bossID)
+);
 
 -- insert data into the database
 INSERT INTO difficulty VALUES
