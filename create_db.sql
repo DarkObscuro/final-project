@@ -13,9 +13,11 @@ CREATE TABLE team (
 CREATE TABLE raid (
   raidID        INT(11)        NOT NULL   AUTO_INCREMENT,
   teamID        INT(11)        NOT NULL,
+  raidName      VARCHAR(255)   NOT NULL,
   raidDate      DATETIME       NOT NULL,
   raidDuration  DECIMAL(10,2)  NOT NULL,
-  PRIMARY KEY (raidID)
+  PRIMARY KEY (raidID),
+  FOREIGN KEY (teamID) references team(teamID)
 );
 
 CREATE TABLE difficulty (
@@ -31,7 +33,9 @@ CREATE TABLE boss (
   bossName        VARCHAR(255) NOT NULL,
   bossHP          INT,
   bossScale       INT,
-  PRIMARY KEY (bossID)
+  PRIMARY KEY (bossID),
+  FOREIGN KEY (difficultyID) references difficulty(difficultyID),
+  FOREIGN KEY (raidID) references raid(raidID)
 );
 
 CREATE TABLE player (
@@ -41,14 +45,17 @@ CREATE TABLE player (
   playerJob       VARCHAR(255)   NOT NULL,
   playerTitle     VARCHAR(255),
   playerFC        VARCHAR(255),
-  PRIMARY KEY (playerID)
+  PRIMARY KEY (playerID),
+  FOREIGN KEY (teamID) references team(teamID)
 );
 
--- Foreign keys
-ALTER TABLE boss ADD CONSTRAINT boss_difficulty FOREIGN KEY (difficultyID) references difficulty(difficultyID);
-ALTER TABLE raid ADD CONSTRAINT raid_team FOREIGN KEY (teamID) references team(teamID);
-ALTER TABLE player ADD CONSTRAINT player_team FOREIGN KEY (teamID) references team(teamID);
-ALTER TABLE boss ADD CONSTRAINT raid_boss FOREIGN KEY (raidID) references raid(raidID);
+CREATE TABLE raid_boss (
+   raidID        INT(11)        NOT NULL,
+   bossID        INT(11)        NOT NULL,
+   FOREIGN KEY (raidID) references raid(raidID),
+   FOREIGN KEY (teamID) references team(teamID),
+   PRIMARY KEY CLUSTERED (raidID,teamID)
+)
 
 -- insert data into the database
 INSERT INTO difficulty VALUES
