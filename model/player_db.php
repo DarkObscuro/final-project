@@ -1,4 +1,19 @@
 <?php
+function get_players() {
+    global $db;
+    $query = 'SELECT * FROM player';
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
 function get_player_by_pseudo($pseudo) {
     global $db;
     $query = 'SELECT * FROM player
@@ -34,18 +49,15 @@ function get_player($player_ID) {
     }
 }
 
-function add_player($player_ID, $player_Pseudo, $player_Job,
+function add_player($player_Pseudo, $player_Job,
         $player_Title, $player_FC) {
     global $db;
     $query = 'INSERT INTO player
-                 (playerID, playerPseudo, playerJob,
-                 playerTitle, playerFC)
+                 (playerPseudo, playerJob, playerTitle, playerFC)
               VALUES
-                 (:player_ID, :player_Pseudo, :player_Job, :player_Title,
-                  :player_FC)';
+                 (:player_Pseudo, :player_Job, :player_Title, :player_FC)';
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':player_ID', $player_ID);
         $statement->bindValue(':player_Pseudo', $player_Pseudo);
         $statement->bindValue(':player_Job', $player_Job);
         $statement->bindValue(':player_Title', $player_Title);

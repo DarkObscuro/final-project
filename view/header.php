@@ -3,8 +3,8 @@
 <!-- the head section -->
 <head>
     <title>Raid Planner</title>
-    <link rel="stylesheet" type="text/css"
-          href="../../util/main.css">
+    <link rel="stylesheet" type="text/css" href="../../util/main.css">
+    <link rel="stylesheet" type="text/css" href="util/main.css">
 </head>
 
 <!-- the body section -->

@@ -1,6 +1,6 @@
 <?php 
 require('util/main.php');
-include 'view/header.php'; ?>
+include ('view/header.php'); ?>
 <main>
     <h1>Menu</h1>
     <ul>

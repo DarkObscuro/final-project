@@ -1,6 +1,6 @@
 <?php include '../../view/header.php'; ?>
 <main>
-    <h1>Menu</h1>
+    <h1>Manager</h1>
     <ul>
         <li>
             <a href="?action=team_manager">Team Manager</a>
