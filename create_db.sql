@@ -48,7 +48,7 @@ CREATE TABLE player (
 );
 
 CREATE TABLE raid_boss (
-  raidID        INT(11)        NOT NULL,
+  raidID        INT(11),
   bossID        INT(11)        NOT NULL,
   FOREIGN KEY (raidID) references raid(raidID),
   FOREIGN KEY (bossID) references boss(bossID),
