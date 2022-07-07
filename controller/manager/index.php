@@ -106,8 +106,13 @@ if ($action == 'menu') {
     include('raid_team_add.php');       
 } else if ($action == 'raid_bosses_add_form') {
     $bosses = get_bosses();
-    $raids = get_raids();
-    include('raid_bosses_add.php');
+    $raid_ID = filter_input(INPUT_POST, 'raid_id', FILTER_VALIDATE_INT);
+    if ($raid_ID == NULL || $raid_ID == FALSE) {
+        $error = "Missing or incorrect raid id.";
+        include('../../errors/error.php');
+    } else { 
+        include('raid_bosses_add.php');
+    }
 } else if ($action == 'add_raid') {
     $raid_Name = filter_input(INPUT_POST, 'name');
     $raid_Date = filter_input(INPUT_POST, 'datetime');

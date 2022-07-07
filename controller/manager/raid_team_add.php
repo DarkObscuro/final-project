@@ -1,6 +1,6 @@
 <?php include '../../view/header.php'; ?>
 <main>
-    <h1>Add Raid</h1>
+    <h1>Assign a Team to the Raid</h1>
     <form action="index.php" method="post">
         <input type="hidden" name="action" value="add_team_raid">
 

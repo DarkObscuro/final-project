@@ -11,6 +11,7 @@
                 <th>Datetime</th>
                 <th>Duration</th>
                 <th>Bosses</th>
+                <th>Add Bosses</th>
                 <th>&nbsp;</th>
             </tr>
             <?php foreach ($raids as $raid) : ?>
@@ -31,6 +32,13 @@
                 </td>
                 <td><form action="." method="post">
                     <input type="hidden" name="action"
+                           value="raid_bosses_add_form">
+                    <input type="hidden" name="raid_id"
+                           value="<?php echo $raid['raidID']; ?>">
+                    <input type="submit" value="Add">
+                </form></td>
+                <td><form action="." method="post">
+                    <input type="hidden" name="action"
                            value="delete_raid">
                     <input type="hidden" name="raid_id"
                            value="<?php echo $raid['raidID']; ?>">
@@ -41,7 +49,6 @@
         </table>
         <p><a href="?action=raid_add_form">Add Raid</a></p>
         <p><a href="?action=raid_team_add_form">Assign Team to a Raid</a></p>
-        <p><a href="?action=raid_bosses_add_form">Assign Bosses to a Raid</a></p>  
     </section>
     
     <p class="last_paragraph"><a href="index.php?action=menu">Back</a></p>

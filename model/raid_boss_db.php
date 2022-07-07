@@ -93,18 +93,16 @@ function delete_raid_boss($raid_ID, $boss_ID) {
 
 function is_boss_in_raid($raid_ID, $boss_ID) {
     global $db;
-    $query = 'SELECT * FROM raid_boss WHERE raidID = :raid_ID AND bossID = :boss_ID';
+    $query = 'SELECT * FROM raid_boss
+        WHERE raidID = :raid_ID AND bossID = :boss_ID';
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':raid_ID', $raid_ID);
         $statement->bindValue(':boss_ID', $boss_ID);
-        $result = $statement->execute();
+        $statement->execute();
+        $result = $statement->fetch();
         $statement->closeCursor();
-        if ($result == NULL) {
-            return false;
-        } else {
-            return true;
-        }
+        return $result;
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
         display_db_error($error_message);
