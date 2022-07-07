@@ -18,6 +18,7 @@ if ($action == 'menu') {
 
 } else if ($action == 'player_manager') {
     $players = get_players();
+    $teams = get_teams();
     include('players.php');
 } else if ($action == 'delete_player') {
     $player_id = filter_input(INPUT_POST, 'player_id', FILTER_VALIDATE_INT);
@@ -57,7 +58,11 @@ if ($action == 'menu') {
         header("Location: .?action=team_manager");
     }
 } else if ($action == 'team_add_form') {
-    include('team_add.php');    
+    include('team_add.php');
+} else if ($action == 'team_players_add_form') {
+    $teams = get_teams();
+    $players = get_players();
+    include('team_players_add.php');
 } else if ($action == 'add_team') {
     $teamName = filter_input(INPUT_POST, 'name');
     if ($teamName == NULL) {
@@ -67,7 +72,15 @@ if ($action == 'menu') {
         add_team($teamName);
         header("Location: .?action=team_manager");
     }
-
+} else if ($action == 'add_team_players') {
+    $team_selected_ID = filter_input(INPUT_POST, 'team');
+    if(isset($_POST["players"])) {  
+        { 
+            foreach ($_POST['players'] as $player_selected_ID)  
+            add_player_to_team($player_selected_ID, $team_selected_ID); 
+        }
+        header("Location: .?action=player_manager");
+    }
 
 } else if ($action == 'raid_manager') {
     $raids = get_raids();

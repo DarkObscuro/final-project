@@ -22,7 +22,8 @@
             </tr>
             <?php endforeach; ?>
         </table>
-        <p><a href="?action=team_add_form">Add Team</a></p>     
+        <p><a href="?action=team_add_form">Add Team</a></p>
+        <p><a href="?action=team_players_add_form">Add Players to a Team</a></p>    
     </section>
 
     <p class="last_paragraph"><a href="index.php?action=menu">Back</a></p>

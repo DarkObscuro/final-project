@@ -7,6 +7,7 @@
         <table>
             <tr>
                 <th>Pseudo</th>
+                <th>Team</th>
                 <th>Job</th>
                 <th>Title</th>
                 <th>FC</th>
@@ -15,6 +16,7 @@
             <?php foreach ($players as $player) : ?>
             <tr>
                 <td><?php echo $player['playerPseudo']; ?></td>
+                <td><?php echo get_Name_from_ID($player['teamID']); ?></td>
                 <td><?php echo $player['playerJob']; ?></td>
                 <td><?php echo $player['playerTitle']; ?></td>
                 <td><?php echo $player['playerFC']; ?></td>

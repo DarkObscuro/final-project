@@ -103,4 +103,26 @@ function delete_team($team_ID) {
         display_db_error($error_message);
     }
 }
+
+function get_Name_from_ID($team_ID) {
+    global $db;
+    $query = 'SELECT teamName
+              FROM team
+              WHERE teamID = :team_ID';
+    if ($team_ID == NULL) {
+        return '<i>None</i>';
+    } else {
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':team_ID', $team_ID);
+            $statement->execute();
+            $result = $statement->fetch();
+            $statement->closeCursor();
+            return $result[0];
+        } catch (PDOException $e) {
+            $error_message = $e->getMessage();
+            display_db_error($error_message);
+        }
+    }
+}
 ?>

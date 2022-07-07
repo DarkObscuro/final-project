@@ -115,4 +115,20 @@ function delete_player($player_ID) {
         display_db_error($error_message);
     }
 }
+
+function add_player_to_team($player_ID, $team_ID) {
+    global $db;
+    $query = 'UPDATE player SET teamID = :team_ID WHERE player.playerID = :player_ID';
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':team_ID', $team_ID);
+        $statement->bindValue(':player_ID', $player_ID);
+        $row_count = $statement->execute();
+        $statement->closeCursor();
+        return $row_count;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
 ?>
