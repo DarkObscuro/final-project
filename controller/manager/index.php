@@ -17,7 +17,7 @@ if ($action == 'menu') {
 
 
 } else if ($action == 'player_manager') {
-    $players =  get_players();
+    $players = get_players();
     include('players.php');
 } else if ($action == 'delete_player') {
     $player_id = filter_input(INPUT_POST, 'player_id', FILTER_VALIDATE_INT);
@@ -45,7 +45,7 @@ if ($action == 'menu') {
 
 
 } else if ($action == 'team_manager') {
-    $teams =  get_teams();
+    $teams = get_teams();
     include('teams.php');
 } else if ($action == 'delete_team') {
     $team_id = filter_input(INPUT_POST, 'team_id', FILTER_VALIDATE_INT);
@@ -68,8 +68,32 @@ if ($action == 'menu') {
         header("Location: .?action=team_manager");
     }
 
+
 } else if ($action == 'raid_manager') {
-    include('raids.php');    
+    $raids = get_raids();
+    include('raids.php');
+} else if ($action == 'delete_raid') {
+    $raid_id = filter_input(INPUT_POST, 'raid_id', FILTER_VALIDATE_INT);
+    if ($raid_id == NULL || $raid_id == FALSE) {
+        $error = "Missing or incorrect raid id.";
+        include('../../errors/error.php');
+    } else { 
+        delete_raid($raid_id);
+        header("Location: .?action=raid_manager");
+    }
+} else if ($action == 'raid_add_form') {
+    include('raid_add.php');    
+} else if ($action == 'add_raid') {
+    $raid_Name = filter_input(INPUT_POST, 'name');
+    $raid_Date = filter_input(INPUT_POST, 'datetime');
+    $raid_Duration = filter_input(INPUT_POST, 'duration');
+    if ($raid_Name == NULL || $raid_Date == NULL || $raid_Duration == NULL) {
+        $error = "Invalid raid data. Fields must be filled.";
+        include('../errors/error.php');
+    } else { 
+        add_raid($raid_Name, $raid_Date, $raid_Duration);
+        header("Location: .?action=raid_manager");
+    }
 } 
 
 ?>

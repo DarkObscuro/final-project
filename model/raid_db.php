@@ -1,4 +1,19 @@
 <?php
+function get_raids() {
+    global $db;
+    $query = 'SELECT * FROM raid';
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
 function get_raid($raid_ID) {
     global $db;
     $query = 'SELECT *
@@ -17,16 +32,15 @@ function get_raid($raid_ID) {
     }
 }
 
-function add_raid($raid_ID, $team_ID, $raid_Date, $raid_Duration) {
+function add_raid($raid_Name, $raid_Date, $raid_Duration) {
     global $db;
     $query = 'INSERT INTO raid
-                 (raidID, teamID, raidDate, raidDuration)
+                 (raidName, raidDate, raidDuration)
               VALUES
-                 (:raid_ID, :team_ID, :raid_Date, :raid_Duration)';
+                 (:raid_Name, :raid_Date, :raid_Duration)';
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':raid_ID', $raid_ID);
-        $statement->bindValue(':team_ID', $team_ID);
+        $statement->bindValue(':raid_Name', $raid_Name);
         $statement->bindValue(':raid_Date', $raid_Date);
         $statement->bindValue(':raid_Duration', $raid_Duration);
         $statement->execute();
@@ -41,16 +55,16 @@ function add_raid($raid_ID, $team_ID, $raid_Date, $raid_Duration) {
     }
 }
 
-function update_raid($raid_ID, $team_ID, $raid_Date, $raid_Duration) {
+function update_raid($raid_ID, $raid_Name, $raid_Date, $raid_Duration) {
     global $db;
     $query = 'UPDATE raid
-              SET teamID = :team_ID,
+              SET raidName = :raid_Name,
                   raidDate = :raid_Date,
                   raidDuration = :raid_Duration,
               WHERE raidID = :raid_ID';
     try {
         $statement = $db->prepare($query);
-        $statement->bindValue(':team_ID', $team_ID);
+        $statement->bindValue(':raid_Name', $raid_Name);
         $statement->bindValue(':raid_Date', $raid_Date);
         $statement->bindValue(':raid_Duration', $raid_Duration);
         $statement->bindValue(':raid_ID', $raid_ID);
