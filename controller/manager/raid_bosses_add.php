@@ -2,14 +2,21 @@
 <main>
     <h1>Add Raid</h1>
     <form action="index.php" method="post">
-        <input type="hidden" name="action" value="add_raid">
+        <input type="hidden" name="action" value="add_bosses_raid">
 
         <label>Raid:</label>
-        <select name="team"> <?php foreach ($teams as $team) echo "<option value=".$team['teamID'].">".$team['teamName']."</option>"; ?> </select>
+        <select name="raid"> <?php foreach ($raids as $raid) echo "<option value=".$raid['raidID'].">".$raid['raidName']."</option>"; ?> </select>
         <br>
 
         <label>Bosses:</label><br>
-        <select name="players[]" multiple> <?php foreach ($players as $player) echo "<option value=".$player['playerID'].">".$player['playerPseudo']."</option>"; ?> </select>
+        <select name="bosses[]" multiple> 
+            <?php 
+            foreach ($bosses as $boss) {
+                if (is_boss_in_raid($raid_ID, $boss_ID))
+                echo "<option value=".$boss['bossID'].">".$boss['bossName']."</option>"; 
+            }
+            ?> 
+        </select>
         <br>
 
         <label>&nbsp;</label>

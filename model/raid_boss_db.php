@@ -8,7 +8,7 @@ function get_raids_from_boss($boss_ID) {
         $statement = $db->prepare($query);
         $statement->bindValue(':boss_ID', $boss_ID);
         $statement->execute();
-        $result = $statement->fetch();
+        $result = $statement->fetchAll();
         $statement->closeCursor();
         return $result;
     } catch (PDOException $e) {
@@ -26,9 +26,10 @@ function get_bosses_from_raid($raid_ID) {
         $statement = $db->prepare($query);
         $statement->bindValue(':raid_ID', $raid_ID);
         $statement->execute();
-        $result = $statement->fetch();
+        $result = $statement->fetchAll();
         $statement->closeCursor();
         return $result;
+        
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
         display_db_error($error_message);
@@ -60,7 +61,7 @@ function update_raid_boss($raid_ID, $boss_ID) {
     $query = 'UPDATE raid_boss
               SET raidID = :raid_ID,
                   bossID = :boss_ID,
-              WHERE raidID = :raid_ID AND boss_ID = :boss_ID';
+              WHERE raidID = :raid_ID AND bossID = :boss_ID';
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':raid_ID', $raid_ID);
@@ -76,7 +77,7 @@ function update_raid_boss($raid_ID, $boss_ID) {
 
 function delete_raid_boss($raid_ID, $boss_ID) {
     global $db;
-    $query = 'DELETE FROM raid_boss WHERE raidID = :raid_ID AND boss_ID = :boss_ID';
+    $query = 'DELETE FROM raid_boss WHERE raidID = :raid_ID AND bossID = :boss_ID';
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':raid_ID', $raid_ID);
@@ -84,6 +85,26 @@ function delete_raid_boss($raid_ID, $boss_ID) {
         $row_count = $statement->execute();
         $statement->closeCursor();
         return $row_count;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
+function is_boss_in_raid($raid_ID, $boss_ID) {
+    global $db;
+    $query = 'SELECT * FROM raid_boss WHERE raidID = :raid_ID AND bossID = :boss_ID';
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':raid_ID', $raid_ID);
+        $statement->bindValue(':boss_ID', $boss_ID);
+        $result = $statement->execute();
+        $statement->closeCursor();
+        if ($result == NULL) {
+            return false;
+        } else {
+            return true;
+        }
     } catch (PDOException $e) {
         $error_message = $e->getMessage();
         display_db_error($error_message);

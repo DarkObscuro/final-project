@@ -91,4 +91,20 @@ function delete_raid($raid_ID) {
         display_db_error($error_message);
     }
 }
+
+function add_team_to_raid($team_ID, $raid_ID) {
+    global $db;
+    $query = 'UPDATE raid SET teamID = :team_ID WHERE raid.raidID = :raid_ID';
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':team_ID', $team_ID);
+        $statement->bindValue(':raid_ID', $raid_ID);
+        $row_count = $statement->execute();
+        $statement->closeCursor();
+        return $row_count;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
 ?>

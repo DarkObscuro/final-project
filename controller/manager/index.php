@@ -3,6 +3,8 @@ require('../../model/database.php');
 require('../../model/player_db.php');
 require('../../model/raid_db.php');
 require('../../model/team_db.php');
+require('../../model/raid_boss_db.php');
+require('../../model/boss_db.php');
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
@@ -82,8 +84,10 @@ if ($action == 'menu') {
         header("Location: .?action=player_manager");
     }
 
+
 } else if ($action == 'raid_manager') {
     $raids = get_raids();
+    $teams = get_teams();
     include('raids.php');
 } else if ($action == 'delete_raid') {
     $raid_id = filter_input(INPUT_POST, 'raid_id', FILTER_VALIDATE_INT);
@@ -95,7 +99,15 @@ if ($action == 'menu') {
         header("Location: .?action=raid_manager");
     }
 } else if ($action == 'raid_add_form') {
-    include('raid_add.php');    
+    include('raid_add.php');       
+} else if ($action == 'raid_team_add_form') {
+    $teams = get_teams();
+    $raids = get_raids();
+    include('raid_team_add.php');       
+} else if ($action == 'raid_bosses_add_form') {
+    $bosses = get_bosses();
+    $raids = get_raids();
+    include('raid_bosses_add.php');
 } else if ($action == 'add_raid') {
     $raid_Name = filter_input(INPUT_POST, 'name');
     $raid_Date = filter_input(INPUT_POST, 'datetime');
@@ -105,6 +117,25 @@ if ($action == 'menu') {
         include('../errors/error.php');
     } else { 
         add_raid($raid_Name, $raid_Date, $raid_Duration);
+        header("Location: .?action=raid_manager");
+    }
+} else if ($action == 'add_team_raid') {
+    $team_selected_ID = filter_input(INPUT_POST, 'team');
+    $raid_selected_ID = filter_input(INPUT_POST, 'raid');
+    if ($team_selected_ID == NULL || $raid_selected_ID == NULL) {
+        $error = "Invalid raid data. Fields must be filled.";
+        include('../errors/error.php');
+    } else { 
+        add_team_to_raid($team_selected_ID, $raid_selected_ID);
+        header("Location: .?action=raid_manager");
+    }
+} else if ($action == 'add_bosses_raid') {
+    $raid_selected_ID = filter_input(INPUT_POST, 'raid');
+    if(isset($_POST["bosses"])) {  
+        { 
+            foreach ($_POST['bosses'] as $boss_selected_ID)  
+            add_raid_boss($raid_selected_ID, $boss_selected_ID); 
+        }
         header("Location: .?action=raid_manager");
     }
 } 

@@ -2,14 +2,14 @@
 <main>
     <h1>Add Raid</h1>
     <form action="index.php" method="post">
-        <input type="hidden" name="action" value="add_raid">
+        <input type="hidden" name="action" value="add_team_raid">
 
         <label>Raid:</label>
-        <select name="team"> <?php foreach ($teams as $team) echo "<option value=".$team['teamID'].">".$team['teamName']."</option>"; ?> </select>
+        <select name="raid"> <?php foreach ($raids as $raid) echo "<option value=".$raid['raidID'].">".$raid['raidName']."</option>"; ?> </select>
         <br>
 
         <label>Team:</label><br>
-        <select name="players"> <?php foreach ($players as $player) echo "<option value=".$player['playerID'].">".$player['playerPseudo']."</option>"; ?> </select>
+        <select name="team"> <?php foreach ($teams as $team) echo "<option value=".$team['teamID'].">".$team['teamName']."</option>"; ?> </select>
         <br>
 
         <label>&nbsp;</label>

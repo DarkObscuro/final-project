@@ -7,15 +7,28 @@
         <table>
             <tr>
                 <th>Name</th>
+                <th>Team</th>
                 <th>Datetime</th>
                 <th>Duration</th>
+                <th>Bosses</th>
                 <th>&nbsp;</th>
             </tr>
             <?php foreach ($raids as $raid) : ?>
             <tr>
                 <td><?php echo $raid['raidName']; ?></td>
+                <td><?php echo get_Name_from_ID($raid['teamID']); ?></td>
                 <td><?php echo $raid['raidDate']; ?></td>
                 <td><?php echo $raid['raidDuration']; ?></td>
+                <td>
+                    <?php 
+                    $bosses_ID = get_bosses_from_raid($raid['raidID']);
+                    $bosses = [sizeof($bosses_ID)];
+                    for ($i=0; $i<sizeof($bosses_ID); $i++) {
+                        $bosses[$i] = get_boss_name_from_id($bosses_ID[$i][0]);
+                    }
+                    echo implode(", ",$bosses);
+                    ?>
+                </td>
                 <td><form action="." method="post">
                     <input type="hidden" name="action"
                            value="delete_raid">
@@ -26,7 +39,9 @@
             </tr>
             <?php endforeach; ?>
         </table>
-        <p><a href="?action=raid_add_form">Add Raid</a></p>     
+        <p><a href="?action=raid_add_form">Add Raid</a></p>
+        <p><a href="?action=raid_team_add_form">Assign Team to a Raid</a></p>
+        <p><a href="?action=raid_bosses_add_form">Assign Bosses to a Raid</a></p>  
     </section>
     
     <p class="last_paragraph"><a href="index.php?action=menu">Back</a></p>
