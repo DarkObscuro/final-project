@@ -79,6 +79,10 @@ function update_raid($raid_ID, $raid_Name, $raid_Date, $raid_Duration) {
 
 function delete_raid($raid_ID) {
     global $db;
+    $bosses_ID = get_bosses_from_raid_list($raid_ID);
+    foreach ($bosses_ID as $boss_ID) {
+        delete_raid_boss($raid_ID, $boss_ID);
+    }
     $query = 'DELETE FROM raid WHERE raidID = :raid_ID';
     try {
         $statement = $db->prepare($query);

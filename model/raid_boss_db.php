@@ -36,6 +36,15 @@ function get_bosses_from_raid($raid_ID) {
     }
 }
 
+function get_bosses_from_raid_list($raid_ID) {
+    $bosses_ID = get_bosses_from_raid($raid_ID);
+    $bosses = [sizeof($bosses_ID)];
+    for ($i=0; $i<sizeof($bosses_ID); $i++) {
+        $bosses[$i] = $bosses_ID[$i][0];
+    }
+    return $bosses;
+}
+
 function add_raid_boss($raid_ID, $boss_ID) {
     global $db;
     $query = 'INSERT INTO raid_boss
