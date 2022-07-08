@@ -9,7 +9,31 @@
         <br>
 
         <label>Job:</label>
-        <input type="text" name="job" />
+        <select name="job">
+            <option value="Paladin">Paladin</option>
+            <option value="Warrior">Warrior</option>
+            <option value="Dark Knight">Dark Knight</option>
+            <option value="Gunbreaker">Gunbreaker</option>
+
+            <option value="White Mage">White Mage</option>
+            <option value="Scholar">Scholar</option>
+            <option value="Astrologian">Astrologian</option>
+            <option value="Sage">Sage</option>
+
+            <option value="Monk">Monk</option>
+            <option value="Dragoon">Dragoon</option>
+            <option value="Ninja">Ninja</option>
+            <option value="Samurai">Samurai</option>
+            <option value="Reaper">Reaper</option>
+
+            <option value="Bard">Bard</option>
+            <option value="Machinist">Machinist</option>
+            <option value="Dancer">Dancer</option>
+
+            <option value="Black Mage">Black Mage</option>
+            <option value="Summoner">Summoner</option>
+            <option value="Red Mage">Red Mage</option>
+        </select>
         <br>
 
         <label>Title:</label>

@@ -9,6 +9,7 @@
                 <th>Pseudo</th>
                 <th>Team</th>
                 <th>Job</th>
+                <th>Role</th>
                 <th>Title</th>
                 <th>FC</th>
                 <th>&nbsp;</th>
@@ -18,6 +19,7 @@
                 <td><?php echo $player['playerPseudo']; ?></td>
                 <td><?php echo get_Name_from_ID($player['teamID']); ?></td>
                 <td><?php echo $player['playerJob']; ?></td>
+                <td><?php echo $player['playerRole']; ?></td>
                 <td><?php echo $player['playerTitle']; ?></td>
                 <td><?php echo $player['playerFC']; ?></td>
                 <td><form action="." method="post">

@@ -49,17 +49,24 @@ function get_player($player_ID) {
     }
 }
 
-function add_player($player_Pseudo, $player_Job,
-        $player_Title, $player_FC) {
+function add_player($player_Pseudo, $player_Job, $player_Title, $player_FC) {
     global $db;
+    $player_Role = match ($player_Job) {
+        'Paladin','Warrior','Dark Knight','Gunbreaker' => 'Tank',
+        'White Mage','Scholar','Astrologian','Sage' => 'Healer',
+        'Monk','Dragoon','Ninja','Samurai','Reaper' => 'Melee',
+        'Bard','Machinist','Dancer' => 'Range',
+        'Black Mage','Summoner','Red Mage' => 'Caster',
+    };
     $query = 'INSERT INTO player
-                 (playerPseudo, playerJob, playerTitle, playerFC)
+                 (playerPseudo, playerJob, playerRole, playerTitle, playerFC)
               VALUES
-                 (:player_Pseudo, :player_Job, :player_Title, :player_FC)';
+                 (:player_Pseudo, :player_Job, :player_Role, :player_Title, :player_FC)';
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':player_Pseudo', $player_Pseudo);
         $statement->bindValue(':player_Job', $player_Job);
+        $statement->bindValue(':player_Role', $player_Role);
         $statement->bindValue(':player_Title', $player_Title);
         $statement->bindValue(':player_FC', $player_FC);
         $statement->execute();
