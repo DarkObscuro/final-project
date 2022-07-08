@@ -7,7 +7,7 @@
         <table>
             <tr>
                 <th>Name</th>
-                <th>&nbsp;</th>
+                <th>Delete Team</th>
             </tr>
             <?php foreach ($teams as $team) : ?>
             <tr>

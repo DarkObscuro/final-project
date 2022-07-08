@@ -8,27 +8,39 @@
             <tr>
                 <th>Pseudo</th>
                 <th>Team</th>
+                <th>Leave Team</th>
                 <th>Job</th>
                 <th>Role</th>
                 <th>Title</th>
                 <th>FC</th>
-                <th>&nbsp;</th>
+                <th>Delete Player</th>
             </tr>
             <?php foreach ($players as $player) : ?>
             <tr>
                 <td><?php echo $player['playerPseudo']; ?></td>
                 <td><?php echo get_Name_from_ID($player['teamID']); ?></td>
+                <td>
+                    <form action="." method="post">
+                    <input type="hidden" name="action"
+                           value="delete_player_from_team">
+                    <input type="hidden" name="player_id"
+                           value="<?php echo $player['playerID']; ?>">
+                    <input type="submit" value="Leave">
+                    </form>
+                </td>
                 <td><?php echo $player['playerJob']; ?></td>
                 <td><?php echo $player['playerRole']; ?></td>
                 <td><?php echo $player['playerTitle']; ?></td>
                 <td><?php echo $player['playerFC']; ?></td>
-                <td><form action="." method="post">
+                <td>
+                    <form action="." method="post">
                     <input type="hidden" name="action"
                            value="delete_player">
                     <input type="hidden" name="player_id"
                            value="<?php echo $player['playerID']; ?>">
                     <input type="submit" value="Delete">
-                </form></td>
+                    </form>
+                </td>
             </tr>
             <?php endforeach; ?>
         </table>

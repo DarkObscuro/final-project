@@ -8,16 +8,27 @@
             <tr>
                 <th>Name</th>
                 <th>Team</th>
+                <th>Leave Team</th>
                 <th>Datetime</th>
                 <th>Duration</th>
                 <th>Bosses</th>
                 <th>Add Bosses</th>
-                <th>&nbsp;</th>
+                <th>Remove Bosses</th>
+                <th>Delete Raid</th>
             </tr>
             <?php foreach ($raids as $raid) : ?>
             <tr>
                 <td><?php echo $raid['raidName']; ?></td>
                 <td><?php echo get_Name_from_ID($raid['teamID']); ?></td>
+                <td>
+                    <form action="." method="post">
+                    <input type="hidden" name="action"
+                           value="delete_team_from_raid">
+                    <input type="hidden" name="raid_id"
+                           value="<?php echo $raid['raidID']; ?>">
+                    <input type="submit" value="Leave">
+                    </form>
+                </td>
                 <td><?php echo $raid['raidDate']; ?></td>
                 <td><?php echo $raid['raidDuration']; ?></td>
                 <td>
@@ -36,6 +47,13 @@
                     <input type="hidden" name="raid_id"
                            value="<?php echo $raid['raidID']; ?>">
                     <input type="submit" value="Add">
+                </form></td>
+                <td><form action="." method="post">
+                    <input type="hidden" name="action"
+                           value="raid_bosses_remove_form">
+                    <input type="hidden" name="raid_id"
+                           value="<?php echo $raid['raidID']; ?>">
+                    <input type="submit" value="Remove">
                 </form></td>
                 <td><form action="." method="post">
                     <input type="hidden" name="action"

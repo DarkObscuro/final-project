@@ -31,6 +31,15 @@ if ($action == 'menu') {
         delete_player($player_id);
         header("Location: .?action=player_manager");
     }
+} else if ($action == 'delete_player_from_team') {
+    $player_id = filter_input(INPUT_POST, 'player_id', FILTER_VALIDATE_INT);
+    if ($player_id == NULL || $player_id == FALSE) {
+        $error = "Missing or incorrect player id.";
+        include('../errors/error.php');
+    } else { 
+        remove_player_ID_from_team($player_id);
+        header("Location: .?action=player_manager");
+    }
 } else if ($action == 'player_add_form') {
     include('player_add.php');    
 } else if ($action == 'add_player') {
@@ -98,6 +107,15 @@ if ($action == 'menu') {
         delete_raid($raid_id);
         header("Location: .?action=raid_manager");
     }
+} else if ($action == 'delete_team_from_raid') {
+    $raid_id = filter_input(INPUT_POST, 'raid_id', FILTER_VALIDATE_INT);
+    if ($raid_id == NULL || $raid_id == FALSE) {
+        $error = "Missing or incorrect player id.";
+        include('../errors/error.php');
+    } else { 
+        remove_raid_ID_from_team($raid_id);
+        header("Location: .?action=raid_manager");
+    }
 } else if ($action == 'raid_add_form') {
     include('raid_add.php');       
 } else if ($action == 'raid_team_add_form') {
@@ -112,6 +130,15 @@ if ($action == 'menu') {
         include('../../errors/error.php');
     } else { 
         include('raid_bosses_add.php');
+    }      
+} else if ($action == 'raid_bosses_remove_form') {
+    $bosses = get_bosses();
+    $raid_ID = filter_input(INPUT_POST, 'raid_id', FILTER_VALIDATE_INT);
+    if ($raid_ID == NULL || $raid_ID == FALSE) {
+        $error = "Missing or incorrect raid id.";
+        include('../../errors/error.php');
+    } else { 
+        include('raid_bosses_remove.php');
     }
 } else if ($action == 'add_raid') {
     $raid_Name = filter_input(INPUT_POST, 'name');
@@ -140,6 +167,15 @@ if ($action == 'menu') {
         { 
             foreach ($_POST['bosses'] as $boss_selected_ID)  
             add_raid_boss($raid_selected_ID, $boss_selected_ID); 
+        }
+        header("Location: .?action=raid_manager");
+    }
+} else if ($action == 'remove_bosses_raid') {
+    $raid_selected_ID = filter_input(INPUT_POST, 'raid');
+    if(isset($_POST["bosses"])) {  
+        { 
+            foreach ($_POST['bosses'] as $boss_selected_ID)  
+            delete_raid_boss($raid_selected_ID, $boss_selected_ID); 
         }
         header("Location: .?action=raid_manager");
     }
