@@ -41,6 +41,7 @@ CREATE TABLE player (
   teamID          INT(11),
   playerPseudo    VARCHAR(255)   NOT NULL,
   playerJob       VARCHAR(255)   NOT NULL,
+  playerRole      VARCHAR(255)   NOT NULL,
   playerTitle     VARCHAR(255),
   playerFC        VARCHAR(255),
   PRIMARY KEY (playerID),

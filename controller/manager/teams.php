@@ -1,7 +1,7 @@
 <?php include '../../view/header.php'; ?>
 <main>
     <h1>Teams</h1>
-
+    <?php echo `test`.`lol`; ?>
     <section>
         <!-- display a table of teams -->
         <table>
