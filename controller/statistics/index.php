@@ -28,10 +28,10 @@ foreach($roles_count as $role_count){
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script type="text/javascript">
     
-
     window.onload = function () {
         var chart1 = new CanvasJS.Chart("chartContainer1", {
             animationEnabled: true,
+            theme: "dark1",
             title:{
                 text: "Total players per job"              
             },
@@ -47,6 +47,7 @@ foreach($roles_count as $role_count){
 
         var chart2 = new CanvasJS.Chart("chartContainer2", {
             animationEnabled: true,
+            theme: "dark1",
             title:{
                 text: "Total players per role"              
             },
@@ -61,10 +62,9 @@ foreach($roles_count as $role_count){
         chart2.render();
     }
     </script>
-    <div class="charts_container">
-        <div class="chart" id="chartContainer1"></div>
-        <div class="chart" id="chartContainer2"></div>
-    </div>
+    
+    <div class="chart_container" id="chartContainer1"></div>
+    <div class="chart_container" id="chartContainer2"></div>
     <p class="last_paragraph"><a href="../../index.php">Back</a></p>
 </main>
 <?php include '../../view/footer.php'; ?>
