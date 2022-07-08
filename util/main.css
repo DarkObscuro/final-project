@@ -69,10 +69,11 @@ form {
 
 .charts_container {
     display: flex;
+    justify-content: space-around;
 }
 
 .chart {
     display: flex;
     height: 300px; 
-    width: 40%;
+    width: 45%;
 }
