@@ -58,15 +58,45 @@ function add_player($player_Pseudo, $player_Job, $player_Title, $player_FC) {
         'Bard','Machinist','Dancer' => 'Range',
         'Black Mage','Summoner','Red Mage' => 'Caster',
     };
+    $job_Color = match ($player_Job) {
+        'Paladin' => '#A8D2E6',
+        'Warrior' => '#cf2621',
+        'Dark Knight' => '#d126cb',
+        'Gunbreaker' => '#796D30',
+        'White Mage' => '#FFF0DC',
+        'Scholar' => '#8657FF',
+        'Astrologian' => '#FFE74A',
+        'Sage' => '#80A0F0',
+        'Monk' => '#d69c00',
+        'Dragoon' => '#4164CD',
+        'Ninja' => '#AF1964',
+        'Samurai' => '#e46d04',
+        'Reaper' => '#965A90',
+        'Bard' => '#394925',
+        'Machinist' => '#6EE1D6',
+        'Dancer' => '#E2B0AF',
+        'Black Mage' => '#A579D6',
+        'Summoner' => '#2D9B78',
+        'Red Mage' => '#e87b7b',
+    };
+    $role_Color = match ($player_Role) {
+        'Paladin','Warrior','Dark Knight','Gunbreaker' => '#4257C0',
+        'White Mage','Scholar','Astrologian','Sage' => '#487B39',
+        'Monk','Dragoon','Ninja','Samurai','Reaper' => '#753637',
+        'Bard','Machinist','Dancer' => '#FCAD03',
+        'Black Mage','Summoner','Red Mage' => '#641E82',
+    };
     $query = 'INSERT INTO player
-                 (playerPseudo, playerJob, playerRole, playerTitle, playerFC)
+                 (playerPseudo, playerJob, jobColor, playerRole, roleColor, playerTitle, playerFC)
               VALUES
-                 (:player_Pseudo, :player_Job, :player_Role, :player_Title, :player_FC)';
+                 (:player_Pseudo, :player_Job, :job_Color, :player_Role, :role_Color, :player_Title, :player_FC)';
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':player_Pseudo', $player_Pseudo);
         $statement->bindValue(':player_Job', $player_Job);
+        $statement->bindValue(':job_Color', $job_Color);
         $statement->bindValue(':player_Role', $player_Role);
+        $statement->bindValue(':role_Color', $role_Color);
         $statement->bindValue(':player_Title', $player_Title);
         $statement->bindValue(':player_FC', $player_FC);
         $statement->execute();
