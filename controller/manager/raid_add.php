@@ -5,11 +5,11 @@
         <input type="hidden" name="action" value="add_raid">
 
         <label>Name:</label>
-        <input type="text" name="name" />
+        <input type="text" name="name" required/>
         <br>
 
         <label>Date and time:</label>
-        <input type="datetime-local" name="datetime" />
+        <input type="datetime-local" name="datetime" required/>
         <br>
 
         <label>Duration:</label>

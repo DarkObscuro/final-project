@@ -66,3 +66,13 @@ form {
 .last_paragraph {
     margin-bottom: 2em;	
 }
+
+.charts_container {
+    display: flex;
+}
+
+.chart {
+    display: flex;
+    height: 300px; 
+    width: 40%;
+}

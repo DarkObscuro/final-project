@@ -80,11 +80,11 @@ function add_player($player_Pseudo, $player_Job, $player_Title, $player_FC) {
         'Red Mage' => '#e87b7b',
     };
     $role_Color = match ($player_Role) {
-        'Paladin','Warrior','Dark Knight','Gunbreaker' => '#4257C0',
-        'White Mage','Scholar','Astrologian','Sage' => '#487B39',
-        'Monk','Dragoon','Ninja','Samurai','Reaper' => '#753637',
-        'Bard','Machinist','Dancer' => '#FCAD03',
-        'Black Mage','Summoner','Red Mage' => '#641E82',
+        'Tank' => '#4257C0',
+        'Healer' => '#487B39',
+        'Melee' => '#753637',
+        'Range' => '#FCAD03',
+        'Caster' => '#641E82',
     };
     $query = 'INSERT INTO player
                  (playerPseudo, playerJob, jobColor, playerRole, roleColor, playerTitle, playerFC)

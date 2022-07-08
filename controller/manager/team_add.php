@@ -5,7 +5,7 @@
         <input type="hidden" name="action" value="add_team">
 
         <label>Name:</label>
-        <input type="text" name="name" />
+        <input type="text" name="name" required/>
         <input type="submit" value="Add Team" />
         <br>
     </form>

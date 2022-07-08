@@ -5,11 +5,11 @@
         <input type="hidden" name="action" value="add_player">
 
         <label>Pseudo:</label>
-        <input type="text" name="pseudo" />
+        <input type="text" name="pseudo" required/>
         <br>
 
         <label>Job:</label>
-        <select name="job">
+        <select name="job" required>
             <option value="Paladin">Paladin</option>
             <option value="Warrior">Warrior</option>
             <option value="Dark Knight">Dark Knight</option>
