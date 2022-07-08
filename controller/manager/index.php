@@ -90,7 +90,7 @@ if ($action == 'menu') {
             foreach ($_POST['players'] as $player_selected_ID)  
             add_player_to_team($player_selected_ID, $team_selected_ID); 
         }
-        header("Location: .?action=player_manager");
+        header("Location: .?action=team_manager");
     }
 
 
@@ -177,8 +177,8 @@ if ($action == 'menu') {
             foreach ($_POST['bosses'] as $boss_selected_ID)  
             delete_raid_boss($raid_selected_ID, $boss_selected_ID); 
         }
-        header("Location: .?action=raid_manager");
     }
+    header("Location: .?action=raid_manager");
 } 
 
 ?>
