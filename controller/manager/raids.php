@@ -75,6 +75,7 @@
         </table>
         <p class="a-button"><a href="?action=raid_add_form">Add Raid</a></p>
         <p class="a-button"><a href="?action=raid_team_add_form">Assign Team to a Raid</a></p>
+        <br>
     </section>
 </main>
 <?php include '../../view/footer.php'; ?>

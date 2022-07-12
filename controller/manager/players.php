@@ -34,7 +34,8 @@
             </tr>
             <?php endforeach; ?>
         </table>
-        <p class="a-button"><a href="?action=player_add_form">Add Player</a></p>     
+        <p class="a-button"><a href="?action=player_add_form">Add Player</a></p>
+        <br>
     </section>
 </main>
 <?php include '../../view/footer.php'; ?>
