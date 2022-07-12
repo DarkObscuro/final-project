@@ -8,7 +8,7 @@
             <tr>
                 <th>Name</th>
                 <th>Team</th>
-                <th>Leave Team</th>
+                <th>Remove Team</th>
                 <th>Datetime</th>
                 <th>Duration</th>
                 <th>Bosses</th>
@@ -60,15 +60,15 @@
                            value="delete_raid">
                     <input type="hidden" name="raid_id"
                            value="<?php echo $raid['raidID']; ?>">
-                    <input type="submit" value="Delete">
+                    <button type="submit" id="completed-task" class="fabutton">
+                        <i class="fa fa-close" style="font-size:42px;color:red;"></i>
+                    </button>
                 </form></td>
             </tr>
             <?php endforeach; ?>
         </table>
-        <p><a href="?action=raid_add_form">Add Raid</a></p>
-        <p><a href="?action=raid_team_add_form">Assign Team to a Raid</a></p>
+        <p class="a-button"><a href="?action=raid_add_form">Add Raid</a></p>
+        <p class="a-button"><a href="?action=raid_team_add_form">Assign Team to a Raid</a></p>
     </section>
-    
-    <p class="last_paragraph"><a href="index.php?action=menu">Back</a></p>
 </main>
 <?php include '../../view/footer.php'; ?>

@@ -15,8 +15,14 @@ body {
     margin: 0;
     padding: 0;
     text-align: center;
+    overflow: overlay;
 }
 
+.element::-webkit-scrollbar { width: 0 !important }
+
+main {
+    transform: translateY(68px);
+}
 
 h1 {
     font-size: 150%;
@@ -39,7 +45,7 @@ li {
     padding-bottom: 0.5em;
 }
 
-a {
+.a-button a {
     background-color: #5e0909;
     color: white;
     border-radius: 5px;
@@ -47,7 +53,8 @@ a {
     padding: 4px 10px 4px 10px;
     text-decoration: none;
 }
-a:hover {
+
+.a-button a:hover {
     background-color: #8b1414;
     color: white;
     border-radius: 5px;
@@ -120,9 +127,9 @@ tr.active-row {
 @media screen and (max-width:400px) {
     html {
       font-size: 9.411764705882353px;
-    }
-  
-  }
+    } 
+}
+
 
 canvas {
     border: 3px solid #5e0909;
@@ -147,4 +154,97 @@ img {
 
 .fabutton:hover {
     cursor: pointer;
+}
+
+.header-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 42px;
+    text-align: center;
+    z-index: 100;
+}
+
+.header-logo {
+    display: inline-block;
+    margin: 6px 0 0 0;
+    padding: 0;
+    -webkit-transform: translate3d(0, -50%, 0);
+    transform: translate3d(0, -50%, 0);
+    position: absolute;
+    top: 50%;
+    left: 40px;
+}
+  
+.header-logo a {
+    display: block;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: none;
+    transition: all .3s;
+}
+  
+.header-logo img {
+    height: 42px;
+    margin: 0;
+}
+
+.header-nav-wrap {
+    display: inline-block;
+}
+  
+.header-nav-wrap ul {
+    display: inline-block;
+    list-style: none;
+    margin-left: 0;
+    margin-top: 0;
+}
+
+.header-nav-wrap li {
+    display: inline-block;
+    padding-left: 0;
+}
+
+.header-nav-wrap li a {
+    display: block;
+    line-height: calc(78px - (18px * 2));
+    text-decoration: none;
+}
+
+.header-main-nav {
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: .3rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0 0 4px;
+    z-index: 2;
+    position: static;
+}
+
+.header-main-nav li {
+    padding: 0 3rem;
+}
+
+.header-main-nav a {
+    color: rgba(255, 255, 255, 0.5);
+    position: relative;
+}
+
+.header-main-nav a:hover,
+.header-main-nav a:focus,
+.header-main-nav a:active {
+    color: #ffffff;
+}
+
+.header-main-nav .current {
+    background-color: #5e0909;
+    transition-duration: 2s;
+}
+
+.header-main-nav .current a {
+    color: #ffffff;
+    transition-duration:2s;
 }

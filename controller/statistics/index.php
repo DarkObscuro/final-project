@@ -6,7 +6,7 @@ require('../../model/team_db.php');
 require('../../model/raid_boss_db.php');
 require('../../model/boss_db.php');
 require('../../model/chart_db.php');
-include('../../view/header.php'); 
+include('../../view/header_stats.php'); 
 
 $jobs_count = get_player_count_by_job_list();
 $roles_count = get_player_count_by_role_list();
@@ -25,7 +25,7 @@ foreach($roles_count as $role_count){
 
 <main>
     <h1>Statistics</h1>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script type="text/javascript" src="../../util/canvasjs.min.js"></script>
     <script type="text/javascript">
     
     window.onload = function () {

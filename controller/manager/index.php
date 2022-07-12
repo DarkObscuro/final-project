@@ -10,15 +10,11 @@ $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
     if ($action == NULL) {
-        $action = 'menu';
+        $action = 'team_manager';
     }
 }
 
-if ($action == 'menu') {
-    include('menu.php');
-
-
-} else if ($action == 'player_manager') {
+if ($action == 'player_manager') {
     $players = get_players();
     $teams = get_teams();
     include('players.php');
@@ -180,5 +176,20 @@ if ($action == 'menu') {
     }
     header("Location: .?action=raid_manager");
 } 
-
 ?>
+
+<script type="text/javascript">
+    var action = "<?php echo $action; ?>";
+    // Remove the current class from all sections in the header (re-initialisation)
+    document.querySelectorAll('.header-main-nav .Item')[0].classList.remove('current');
+    document.querySelectorAll('.header-main-nav .Item')[1].classList.remove('current');
+    document.querySelectorAll('.header-main-nav .Item')[2].classList.remove('current');
+
+    // Add the current class to the current section
+    if(action === 'team_manager' || action === 'team_add_form' || action === 'team_players_add_form') document.querySelectorAll('.header-main-nav .Item')[0].classList.add('current');
+    if(action === 'player_manager' || action === 'player_add_form') document.querySelectorAll('.header-main-nav .Item')[1].classList.add('current');
+    if(action === 'raid_manager' || action === 'raid_add_form' || action === 'raid_bosses_add_form' || action === 'raid_team_add_form' || action === 'raid_bosses_remove_form') document.querySelectorAll('.header-main-nav .Item')[2].classList.add('current');
+
+
+
+</script>

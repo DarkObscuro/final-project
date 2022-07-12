@@ -48,9 +48,7 @@
             </tr>
             <?php endforeach; ?>
         </table>
-        <p><a href="?action=player_add_form">Add Player</a></p>     
+        <p class="a-button"><a href="?action=player_add_form">Add Player</a></p>     
     </section>
-
-    <p class="last_paragraph"><a href="index.php?action=menu">Back</a></p>
 </main>
 <?php include '../../view/footer.php'; ?>
