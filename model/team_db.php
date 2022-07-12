@@ -203,4 +203,26 @@ function get_Name_from_ID($team_ID) {
         }
     }
 }
+
+function get_players_from_team($team_ID) {
+    global $db;
+    $query = 'SELECT playerID
+              FROM player
+              WHERE teamID = :team_ID';
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':team_ID', $team_ID);
+        $statement->execute();
+        $players_ID = $statement->fetchAll();
+        $statement->closeCursor();
+        $res = [sizeof($players_ID)];
+        for ($i=0; $i<sizeof($players_ID); $i++) {
+            $res[$i] = $players_ID[$i][0];
+        }
+        return $res;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
 ?>

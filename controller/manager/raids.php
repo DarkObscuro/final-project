@@ -26,7 +26,9 @@
                            value="delete_team_from_raid">
                     <input type="hidden" name="raid_id"
                            value="<?php echo $raid['raidID']; ?>">
-                    <input type="submit" value="Leave">
+                    <button type="submit" id="completed-task" class="fabutton">
+                        <i class="fa fa-close" style="font-size:42px;color:white;"></i>
+                    </button>
                     </form>
                 </td>
                 <td><?php echo $raid['raidDate']; ?></td>
@@ -46,14 +48,18 @@
                            value="raid_bosses_add_form">
                     <input type="hidden" name="raid_id"
                            value="<?php echo $raid['raidID']; ?>">
-                    <input type="submit" value="Add">
+                    <button type="submit" id="completed-task" class="fabutton">
+                        <i class="fa fa-user-plus" style="font-size:42px;color:white;"></i>
+                    </button>
                 </form></td>
                 <td><form action="." method="post">
                     <input type="hidden" name="action"
                            value="raid_bosses_remove_form">
                     <input type="hidden" name="raid_id"
                            value="<?php echo $raid['raidID']; ?>">
-                    <input type="submit" value="Remove">
+                    <button type="submit" id="completed-task" class="fabutton">
+                        <i class="fa fa-user-times" style="font-size:42px;color:white;"></i>
+                    </button>
                 </form></td>
                 <td><form action="." method="post">
                     <input type="hidden" name="action"

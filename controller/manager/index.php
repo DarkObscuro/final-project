@@ -10,7 +10,7 @@ $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
     $action = filter_input(INPUT_GET, 'action');
     if ($action == NULL) {
-        $action = 'team_manager';
+        $action = 'player_manager';
     }
 }
 
@@ -34,7 +34,7 @@ if ($action == 'player_manager') {
         include('../errors/error.php');
     } else { 
         remove_player_ID_from_team($player_id);
-        header("Location: .?action=player_manager");
+        header("Location: .?action=team_manager");
     }
 } else if ($action == 'player_add_form') {
     include('player_add.php');    
@@ -67,7 +67,7 @@ if ($action == 'player_manager') {
 } else if ($action == 'team_add_form') {
     include('team_add.php');
 } else if ($action == 'team_players_add_form') {
-    $teams = get_teams();
+    $team_ID = filter_input(INPUT_POST, 'team_id', FILTER_VALIDATE_INT);
     $players = get_players();
     include('team_players_add.php');
 } else if ($action == 'add_team') {

@@ -168,4 +168,65 @@ function add_player_to_team($player_ID, $team_ID) {
         display_db_error($error_message);
     }
 }
+
+function get_pseudo_from_ID($player_ID) {
+    global $db;
+    $query = 'SELECT playerPseudo
+              FROM player
+              WHERE playerID = :player_ID';
+    if ($player_ID == NULL) {
+        return '<i>None</i>';
+    } else {
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':player_ID', $player_ID);
+            $statement->execute();
+            $result = $statement->fetch();
+            $statement->closeCursor();
+            return $result[0];
+        } catch (PDOException $e) {
+            $error_message = $e->getMessage();
+            display_db_error($error_message);
+        }
+    }
+}
+
+function get_job_from_ID($player_ID) {
+    global $db;
+    $query = 'SELECT playerJob
+              FROM player
+              WHERE playerID = :player_ID';
+    if ($player_ID == NULL) {
+        return '<i>None</i>';
+    } else {
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':player_ID', $player_ID);
+            $statement->execute();
+            $result = $statement->fetch();
+            $statement->closeCursor();
+            return $result[0];
+        } catch (PDOException $e) {
+            $error_message = $e->getMessage();
+            display_db_error($error_message);
+        }
+    }
+}
+
+function is_player_in_a_team($player_ID) {
+    global $db;
+    $query = 'SELECT * FROM player WHERE teamID <> NULL';
+    try {
+        $statement = $db->prepare($query);
+        $statement->bindValue(':raid_ID', $raid_ID);
+        $statement->bindValue(':boss_ID', $boss_ID);
+        $statement->execute();
+        $result = $statement->fetch();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
 ?>
