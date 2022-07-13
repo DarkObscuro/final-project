@@ -5,6 +5,8 @@
         <div class="form-input">
         <input type="hidden" name="action" value="add_team_players">
 
+        <label>TEAM</label>
+        <input type="text" value="<?php echo get_team($team_ID)['teamName']?>" readonly disabled style='color:grey;'/>
         <input type="hidden" name="team" value=<?php echo $team_ID; ?>>
         <br>
 

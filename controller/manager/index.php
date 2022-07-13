@@ -17,7 +17,7 @@ if ($action == NULL) {
 if ($action == 'player_manager') {
     $players = get_players();
     $teams = get_teams();
-    include('players.php');
+    include('player/players.php');
 } else if ($action == 'delete_player') {
     $player_id = filter_input(INPUT_POST, 'player_id', FILTER_VALIDATE_INT);
     if ($player_id == NULL || $player_id == FALSE) {
@@ -37,7 +37,7 @@ if ($action == 'player_manager') {
         header("Location: .?action=team_manager");
     }
 } else if ($action == 'player_add_form') {
-    include('player_add.php');    
+    include('player/player_add.php');    
 } else if ($action == 'add_player') {
     $player_Pseudo = filter_input(INPUT_POST, 'pseudo');
     $player_Job = filter_input(INPUT_POST, 'job');
@@ -54,7 +54,7 @@ if ($action == 'player_manager') {
 
 } else if ($action == 'team_manager') {
     $teams = get_teams();
-    include('teams.php');
+    include('team/teams.php');
 } else if ($action == 'delete_team') {
     $team_id = filter_input(INPUT_POST, 'team_id', FILTER_VALIDATE_INT);
     if ($team_id == NULL || $team_id == FALSE) {
@@ -65,11 +65,11 @@ if ($action == 'player_manager') {
         header("Location: .?action=team_manager");
     }
 } else if ($action == 'team_add_form') {
-    include('team_add.php');
+    include('team/team_add.php');
 } else if ($action == 'team_players_add_form') {
     $team_ID = filter_input(INPUT_POST, 'team_id', FILTER_VALIDATE_INT);
     $players = get_players();
-    include('team_players_add.php');
+    include('team/team_players_add.php');
 } else if ($action == 'add_team') {
     $teamName = filter_input(INPUT_POST, 'name');
     if ($teamName == NULL) {
@@ -93,7 +93,7 @@ if ($action == 'player_manager') {
 } else if ($action == 'raid_manager') {
     $raids = get_raids();
     $teams = get_teams();
-    include('raids.php');
+    include('raid/raids.php');
 } else if ($action == 'delete_raid') {
     $raid_id = filter_input(INPUT_POST, 'raid_id', FILTER_VALIDATE_INT);
     if ($raid_id == NULL || $raid_id == FALSE) {
@@ -113,11 +113,11 @@ if ($action == 'player_manager') {
         header("Location: .?action=raid_manager");
     }
 } else if ($action == 'raid_add_form') {
-    include('raid_add.php');       
+    include('raid/raid_add.php');       
 } else if ($action == 'raid_team_add_form') {
     $teams = get_teams();
     $raid_ID = filter_input(INPUT_POST, 'raid_id', FILTER_VALIDATE_INT);
-    include('raid_team_add.php');       
+    include('raid/raid_team_add.php');       
 } else if ($action == 'raid_bosses_add_form') {
     $bosses = get_bosses();
     $raid_ID = filter_input(INPUT_POST, 'raid_id', FILTER_VALIDATE_INT);
@@ -125,7 +125,7 @@ if ($action == 'player_manager') {
         $error_message = "Missing or incorrect raid id.";
         include('../../errors/db_error.php');
     } else { 
-        include('raid_bosses_add.php');
+        include('raid/raid_bosses_add.php');
     }      
 } else if ($action == 'raid_bosses_remove_form') {
     $bosses = get_bosses();
@@ -134,7 +134,7 @@ if ($action == 'player_manager') {
         $error_message = "Missing or incorrect raid id.";
         include('../../errors/db_error.php');
     } else { 
-        include('raid_bosses_remove.php');
+        include('raid/raid_bosses_remove.php');
     }
 } else if ($action == 'add_raid') {
     $raid_Name = filter_input(INPUT_POST, 'name');
