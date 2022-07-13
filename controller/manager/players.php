@@ -33,9 +33,17 @@
                 </td>
             </tr>
             <?php endforeach; ?>
+            <tr>
+                <td colspan="6">
+                    <form action="." method="post">
+                        <input type="hidden" name="action" value="player_add_form">
+                        <button type="submit" id="completed-task" class="fabutton">
+                            <i class="fa fa-user-plus" style="font-size:42px;color:white;"></i>
+                        </button>
+                    </form>
+                </td> 
+            </tr>
         </table>
-        <p class="a-button"><a href="?action=player_add_form">Add Player</a></p>
-        <br>
     </section>
 </main>
 <?php include '../../view/footer.php'; ?>

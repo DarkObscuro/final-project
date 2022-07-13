@@ -21,19 +21,21 @@ body {
 .element::-webkit-scrollbar { width: 0 !important }
 
 main {
-    transform: translateY(68px);
+    transform: translateY(41px);
 }
 
 h1 {
     font-size: 150%;
-    margin: .5em 0;
+    margin: 0;
 }
 h2 {
     font-size: 120%;
     margin: .25em 0 .5em;
+    border-radius: 10px 0;
 }
 h1, h2 {
-    color: #5e0909;
+    background-color: #5e0909;
+    color: white;
 }
 ul {
     list-style-type: none;
@@ -185,11 +187,6 @@ img {
     border: none;
     transition: all .3s;
 }
-  
-.header-logo img {
-    height: 42px;
-    margin: 0;
-}
 
 .header-nav-wrap {
     display: inline-block;
@@ -241,10 +238,116 @@ img {
 
 .header-main-nav .current {
     background-color: #5e0909;
-    transition-duration: 2s;
 }
 
 .header-main-nav .current a {
     color: #ffffff;
-    transition-duration:2s;
+}
+
+/* Form */
+.form-input {
+    height: 80vh;
+    width: 50%;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    overflow: hidden;
+}
+
+.form-input label {
+    transform: translateY(1px);
+    width: 100%;
+    background: #5e0909;
+    border-radius: 20px 0 0 0;
+    letter-spacing: 10px;
+    font-weight: bold;
+}
+
+.form-input input {
+    width: calc(100% - 8px);
+    height: 42px;
+    margin: 0;
+    border-radius: 0 0 20px 0;
+    border: solid 2px #5e0909;
+    border-top: solid 3px #5e0909;
+    background: none;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+}
+
+.form-input input:-webkit-autofill, input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #050505 inset !important;
+    -webkit-text-fill-color: white !important;
+}
+
+.form-input select {
+    width: 100%;
+    height: 42px;
+    margin: 0;
+    border-radius: 0 0 20px 0;
+    border: solid 2px #cbc9c9;
+    background: none;
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.form-input select:focus-visible, input:focus-visible {
+    outline: none;
+}
+
+.form-input select::-ms-expand {
+    display: none;
+}
+
+.form-input select[multiple] {
+    height: auto;
+}
+
+.form-input select option {
+    background-color: #050505;
+    color: white;
+}
+
+.form-input input:hover, select:hover {
+    border-color: #8b1414 !important;
+    background-color: none;
+}
+
+.form-input select:hover {
+    border-color: #8b1414 !important;
+    background-color: none;
+    cursor: pointer;
+}
+
+.form-input input:valid, select:valid {
+    border-color: #5e0909;
+    color: white;
+}
+
+.form-input button {
+    width: 100%;
+    height: 42px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: none;
+    background: #5e0909; 
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.form-input button:hover {
+    background: #8b1414;
+    cursor: pointer;
 }

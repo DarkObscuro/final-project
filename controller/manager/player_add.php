@@ -2,13 +2,14 @@
 <main>
     <h1>Add Player</h1>
     <form action="index.php" method="post">
+        <div class="form-input">
         <input type="hidden" name="action" value="add_player">
 
-        <label>Pseudo:</label>
+        <label>PSEUDO</label>
         <input type="text" name="pseudo" required/>
         <br>
 
-        <label>Job:</label>
+        <label>JOB</label>
         <select name="job" required>
             <option value="Paladin">Paladin</option>
             <option value="Warrior">Warrior</option>
@@ -36,21 +37,18 @@
         </select>
         <br>
 
-        <label>Title:</label>
-        <input type="text" name="title" />
+        <label>TITLE</label>
+        <input type="text" name="title"/>
         <br>
 
-        <label>FC:</label>
-        <input type="text" name="fc" />
+        <label>FREE COMPANY</label>
+        <input type="text" name="fc"/>
         <br>
 
-        <label>&nbsp;</label>
-        <input type="submit" value="Add Player" />
+        <button type="submit">Add Player</button>
         <br>
+        </div>
     </form>
-    <p class="last_paragraph">
-        <a href="index.php?action=player_manager">Back</a>
-    </p>
 
 </main>
 <?php include '../../view/footer.php'; ?>

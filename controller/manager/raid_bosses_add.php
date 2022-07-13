@@ -1,14 +1,16 @@
 <?php include '../../view/header.php'; ?>
 <main>
-    <h1>Add Bosses to the Raid</h1>
+    <h1>Add Bosses to [<?php echo get_raid($raid_ID)['raidName']?>]</h1>
     <form action="index.php" method="post">
+        <div class="form-input">
         <input type="hidden" name="action" value="add_bosses_raid">
 
-        <h2><?php echo get_raid($raid_ID)['raidName']?></h2>
+        <label>RAID</label>
+        <input type="text" value="<?php echo get_raid($raid_ID)['raidName']?>" readonly disabled style='color:grey;'/>
         <input type="hidden" name="raid" value=<?php echo $raid_ID; ?>>
         <br>
 
-        <label>Bosses:</label><br>
+        <label>BOSSES TO ADD</label>
         <select name="bosses[]" multiple> 
             <?php 
             foreach ($bosses as $boss) {
@@ -20,13 +22,10 @@
         </select>
         <br>
 
-        <label>&nbsp;</label>
-        <input type="submit" value="Confirm" />
+        <button type="submit">Confirm</button>
         <br>
+        </div>
     </form>
-    <p class="last_paragraph">
-        <a href="index.php?action=raid_manager">Back</a>
-    </p>
 
 </main>
 <?php include '../../view/footer.php'; ?>

@@ -2,13 +2,14 @@
 <main>
     <h1>Remove Bosses from the Raid</h1>
     <form action="index.php" method="post">
+        <div class="form-input">
         <input type="hidden" name="action" value="remove_bosses_raid">
 
         <h2><?php echo get_raid($raid_ID)['raidName']?></h2>
         <input type="hidden" name="raid" value=<?php echo $raid_ID; ?>>
         <br>
 
-        <label>Bosses:</label><br>
+        <label>BOSSES TO REMOVE</label>
         <select name="bosses[]" multiple> 
             <?php 
             foreach ($bosses as $boss) {
@@ -20,13 +21,10 @@
         </select>
         <br>
 
-        <label>&nbsp;</label>
-        <input type="submit" value="Confirm" />
+        <button type="submit">Confirm</button>
         <br>
+        </div>
     </form>
-    <p class="last_paragraph">
-        <a href="index.php?action=raid_manager">Back</a>
-    </p>
 
 </main>
 <?php include '../../view/footer.php'; ?>

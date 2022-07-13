@@ -64,7 +64,7 @@
                         <input type="hidden" name="action" value="team_add_form">
                         <button type="submit" id="completed-task" class="fabutton">
                             <i class="fa fa-group" style="font-size:42px;color:white;"></i>
-                            <i class="fa fa-plus" style="font-size:42px;color:white;"></i>
+                            <i class="fa fa-plus" style="font-size:22px;color:white;"></i>
                         </button>
                     </form>
                 </td>

@@ -8,6 +8,7 @@
             <tr>
                 <th>Name</th>
                 <th>Team</th>
+                <th>Assign Team</th>
                 <th>Remove Team</th>
                 <th>Datetime</th>
                 <th>Duration</th>
@@ -23,11 +24,24 @@
                 <td>
                     <form action="." method="post">
                     <input type="hidden" name="action"
+                           value="raid_team_add_form">
+                    <input type="hidden" name="raid_id"
+                           value="<?php echo $raid['raidID']; ?>">
+                    <button type="submit" id="completed-task" class="fabutton">
+                        <i class="fa fa-group" style="font-size:42px;color:white;"></i>
+                        <i class="fa fa-plus" style="font-size:22px;color:white;"></i>
+                    </button>
+                    </form>
+                </td>
+                <td>
+                    <form action="." method="post">
+                    <input type="hidden" name="action"
                            value="delete_team_from_raid">
                     <input type="hidden" name="raid_id"
                            value="<?php echo $raid['raidID']; ?>">
                     <button type="submit" id="completed-task" class="fabutton">
-                        <i class="fa fa-close" style="font-size:42px;color:white;"></i>
+                        <i class="fa fa-group" style="font-size:42px;color:white;"></i>
+                        <i class="fa fa-minus" style="font-size:22px;color:white;"></i>
                     </button>
                     </form>
                 </td>
@@ -72,9 +86,17 @@
                 </form></td>
             </tr>
             <?php endforeach; ?>
+            <tr>
+                <td colspan="10">
+                    <form action="." method="post">
+                        <input type="hidden" name="action" value="raid_add_form">
+                        <button type="submit" id="completed-task" class="fabutton">
+                            <i class="fa fa-calendar-plus-o" style="font-size:42px;color:white;"></i>
+                        </button>
+                    </form>
+                </td> 
+            </tr>
         </table>
-        <p class="a-button"><a href="?action=raid_add_form">Add Raid</a></p>
-        <p class="a-button"><a href="?action=raid_team_add_form">Assign Team to a Raid</a></p>
         <br>
     </section>
 </main>

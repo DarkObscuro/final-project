@@ -1,24 +1,23 @@
 <?php include '../../view/header.php'; ?>
 <main>
-    <h1>Assign a Team to the Raid</h1>
+    <h1>Assign a Team to [<?php echo get_raid($raid_ID)['raidName']?>]</h1>
     <form action="index.php" method="post">
+        <div class="form-input">
         <input type="hidden" name="action" value="add_team_raid">
 
-        <label>Raid:</label>
-        <select name="raid"> <?php foreach ($raids as $raid) echo "<option value=".$raid['raidID'].">".$raid['raidName']."</option>"; ?> </select>
-        <br>
+        <label>RAID</label>
+        <input type="text" value="<?php echo get_raid($raid_ID)['raidName']?>" readonly disabled style='color:grey;'/>
+        <input type="hidden" name="raid" value=<?php echo $raid_ID; ?>>
 
-        <label>Team:</label><br>
+        <br>
+        <label>TEAM</label>
         <select name="team"> <?php foreach ($teams as $team) echo "<option value=".$team['teamID'].">".$team['teamName']."</option>"; ?> </select>
         <br>
 
-        <label>&nbsp;</label>
-        <input type="submit" value="Confirm" />
+        <button type="submit">Confirm</button>
         <br>
+        </div>
     </form>
-    <p class="last_paragraph">
-        <a href="index.php?action=raid_manager">Back</a>
-    </p>
 
 </main>
 <?php include '../../view/footer.php'; ?>

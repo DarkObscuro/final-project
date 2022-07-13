@@ -25,7 +25,7 @@ foreach($roles_count as $role_count){
 
 <main>
     <h1>Statistics</h1>
-    <script type="text/javascript" src="../../util/canvasjs.min.js"></script>
+    <script type="text/javascript" src="../../util/js/canvasjs.min.js"></script>
     <script type="text/javascript">
     
     window.onload = function () {
