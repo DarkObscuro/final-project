@@ -14,6 +14,7 @@ if ($action == NULL) {
     }
 }
 
+/* PLAYER MANAGEMENT SECTION */
 if ($action == 'player_manager') {
     $players = get_players();
     $teams = get_teams();
@@ -51,7 +52,7 @@ if ($action == 'player_manager') {
         header("Location: .?action=player_manager");
     }
 
-
+/* TEAM MANAGEMENT SECTION */
 } else if ($action == 'team_manager') {
     $teams = get_teams();
     include('team/teams.php');
@@ -89,7 +90,7 @@ if ($action == 'player_manager') {
         header("Location: .?action=team_manager");
     }
 
-
+/* RAID MANAGEMENT SECTION */
 } else if ($action == 'raid_manager') {
     $raids = get_raids();
     $teams = get_teams();
@@ -138,13 +139,14 @@ if ($action == 'player_manager') {
     }
 } else if ($action == 'add_raid') {
     $raid_Name = filter_input(INPUT_POST, 'name');
-    $raid_Date = filter_input(INPUT_POST, 'datetime');
-    $raid_Duration = filter_input(INPUT_POST, 'duration');
-    if ($raid_Name == NULL || $raid_Date == NULL || $raid_Duration == NULL) {
+    $raid_Day = filter_input(INPUT_POST, 'day');
+    $raid_Start = filter_input(INPUT_POST, 'raidstart');
+    $raid_End = filter_input(INPUT_POST, 'raidend');
+    if ($raid_Name == NULL || $raid_Day == NULL || $raid_Start == NULL || $raid_End == NULL) {
         $error_message = "Invalid raid data. Fields must be filled.";
         include('../../errors/db_error.php');
     } else { 
-        add_raid($raid_Name, $raid_Date, $raid_Duration);
+        add_raid($raid_Name, $raid_Day, $raid_Start, $raid_End);
         header("Location: .?action=raid_manager");
     }
 } else if ($action == 'add_team_raid') {
@@ -178,6 +180,7 @@ if ($action == 'player_manager') {
 } 
 ?>
 
+<!-- ACTIVE SECTION MANAGEMENT -->
 <script type="text/javascript">
     var action = "<?php echo $action; ?>";
     // Remove the current class from all sections in the header (re-initialisation)
@@ -189,7 +192,4 @@ if ($action == 'player_manager') {
     if(action === 'team_manager' || action === 'team_add_form' || action === 'team_players_add_form') document.querySelectorAll('.header-main-nav .Item')[0].classList.add('current');
     if(action === 'player_manager' || action === 'player_add_form') document.querySelectorAll('.header-main-nav .Item')[1].classList.add('current');
     if(action === 'raid_manager' || action === 'raid_add_form' || action === 'raid_bosses_add_form' || action === 'raid_team_add_form' || action === 'raid_bosses_remove_form') document.querySelectorAll('.header-main-nav .Item')[2].classList.add('current');
-
-
-
 </script>

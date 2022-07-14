@@ -14,8 +14,9 @@ CREATE TABLE raid (
   raidID        INT(11)        NOT NULL   AUTO_INCREMENT,
   teamID        INT(11),
   raidName      VARCHAR(255)   NOT NULL,
-  raidDate      DATETIME       NOT NULL,
-  raidDuration  DECIMAL(10,2)  NOT NULL,
+  raidDay       VARCHAR(255)   NOT NULL,
+  raidStart     TIME           NOT NULL,
+  raidEnd       TIME           NOT NULL,
   PRIMARY KEY (raidID),
   FOREIGN KEY (teamID) references team(teamID)
 );

@@ -10,8 +10,9 @@
                 <th>Team</th>
                 <th>Assign Team</th>
                 <th>Remove Team</th>
-                <th>Datetime</th>
-                <th>Duration</th>
+                <th>Day</th>
+                <th>Start</th>
+                <th>End</th>
                 <th>Bosses</th>
                 <th>Add Bosses</th>
                 <th>Remove Bosses</th>
@@ -45,8 +46,9 @@
                     </button>
                     </form>
                 </td>
-                <td><?php echo $raid['raidDate']; ?></td>
-                <td><?php echo $raid['raidDuration']; ?></td>
+                <td><?php echo $raid['raidDay']; ?></td>
+                <td><?php echo $raid['raidStart']; ?></td>
+                <td><?php echo $raid['raidEnd']; ?></td>
                 <td>
                     <?php 
                     $bosses_ID = get_bosses_from_raid($raid['raidID']);
@@ -87,7 +89,7 @@
             </tr>
             <?php endforeach; ?>
             <tr>
-                <td colspan="10">
+                <td colspan="11">
                     <form action="." method="post">
                         <input type="hidden" name="action" value="raid_add_form">
                         <button type="submit" id="completed-task" class="fabutton">

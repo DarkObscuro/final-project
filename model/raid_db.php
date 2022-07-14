@@ -32,17 +32,18 @@ function get_raid($raid_ID) {
     }
 }
 
-function add_raid($raid_Name, $raid_Date, $raid_Duration) {
+function add_raid($raid_Name, $raid_Day, $raid_Start, $raid_End) {
     global $db;
     $query = 'INSERT INTO raid
-                 (raidName, raidDate, raidDuration)
+                 (raidName, raidDay, raidStart, raidEnd)
               VALUES
-                 (:raid_Name, :raid_Date, :raid_Duration)';
+                 (:raid_Name, :raid_Day, :raid_Start, :raid_End)';
     try {
         $statement = $db->prepare($query);
         $statement->bindValue(':raid_Name', $raid_Name);
-        $statement->bindValue(':raid_Date', $raid_Date);
-        $statement->bindValue(':raid_Duration', $raid_Duration);
+        $statement->bindValue(':raid_Day', $raid_Day);
+        $statement->bindValue(':raid_Start', $raid_Start);
+        $statement->bindValue(':raid_End', $raid_End);
         $statement->execute();
         $statement->closeCursor();
 
