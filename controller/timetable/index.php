@@ -20,21 +20,17 @@ foreach ($days as $day) {
     }
     array_push($raid_names, $raids_per_day);
 }
-print_r($raid_names);
-print_r($raid_names[0][0]);
 ?>
 
 <main>
     <h1>Timetable</h1>
     <div class="grid-container">
         <?php 
-        $i = 0;
         foreach ($days as $day): 
         ?>
         <div class='<?php echo $day; ?>'>
             <h1><?php echo $day; ?></h1>
             <?php 
-            $j = 0;
             foreach ($raids as $raid) :
             if ($raid['raidDay'] == $day): ?>
             <table>
@@ -49,7 +45,7 @@ print_r($raid_names[0][0]);
                         <div class="modal" id="modal">
                             <div class="modal-header">
                                 <div class="title">
-                                    <?php echo $raid_names[$i][$j]; ?>
+                                    <?php echo $raid['raidName']; ?>
                                 </div>
                             </div>
                             <div class="modal-body">
@@ -68,13 +64,10 @@ print_r($raid_names[0][0]);
             </table>
             <?php 
             endif;
-            $j += 1;
             endforeach;
             ?>
         </div>
-        <?php
-        $i += 1;endforeach; 
-        ?>
+        <?php endforeach; ?>
     </div>
 </main>
 
