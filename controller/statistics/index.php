@@ -97,12 +97,11 @@ array_push($dataPoints3, array("label"=> 'Red Mage', "y"=> rand(8588, 9286), "co
             },
             axisX: {
                 margin: 10,
-                labelPlacement: "inside",
-                tickPlacement: "inside",
-                labelFontSize: 18,
+                labelFontSize: 15,
+                interval: 1
             },
             axisY2: {
-                labelFontSize: 18,
+                labelFontSize: 15,
                 includeZero: true
             },
             data: [              
@@ -111,6 +110,7 @@ array_push($dataPoints3, array("label"=> 'Red Mage', "y"=> rand(8588, 9286), "co
                 type: "bar",
                 axisYType: "secondary",
                 indexLabel: "{y}",
+                indexLabelFontSize: 15,
                 dataPoints: <?php echo json_encode($dataPoints3, JSON_NUMERIC_CHECK); ?>
             }
             ]
