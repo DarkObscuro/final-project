@@ -434,7 +434,7 @@ input:-webkit-autofill:active{
 }
   
 .modal.active {
-    transform: translate(-50%, -20%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
 }
   
 .modal-header {
