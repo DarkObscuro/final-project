@@ -72,7 +72,7 @@ function add_player($player_Pseudo, $player_Job, $player_Title, $player_FC) {
         'Ninja' => '#AF1964',
         'Samurai' => '#e46d04',
         'Reaper' => '#965A90',
-        'Bard' => '#394925',
+        'Bard' => '#91BA5E',
         'Machinist' => '#6EE1D6',
         'Dancer' => '#E2B0AF',
         'Black Mage' => '#A579D6',
