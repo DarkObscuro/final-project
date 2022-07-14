@@ -33,10 +33,19 @@ h2 {
     margin: .25em 0 .5em;
     border-radius: 10px 0;
 }
+h3 {
+    font-size: 110%;
+    margin: 0;
+    background-color: #290303;
+    color: white;
+}
 h1, h2 {
     background-color: #5e0909;
     color: white;
 }
+
+
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -425,7 +434,7 @@ input:-webkit-autofill:active{
 }
   
 .modal.active {
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -20%) scale(1);
 }
   
 .modal-header {
@@ -434,15 +443,17 @@ input:-webkit-autofill:active{
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid white;
-}
-  
-.modal-header .title {
-    font-size: 1.25rem;
+    background: #5e0909;
+    border-radius: 10px 10px 0 0;
+    font-size: 2rem;
     font-weight: bold;
+    justify-content: center;
+    text-transform: uppercase;
 }
 
 .modal-body {
-    padding: 10px 15px;
+    display: inline-block;
+    width: 100%;
 }
   
 #overlay {
@@ -453,13 +464,14 @@ input:-webkit-autofill:active{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, .8);
     pointer-events: none;
 }
   
 #overlay.active {
     opacity: 1;
     pointer-events: all;
+    height: 95vh;
 }
 
 .popup-button button {

@@ -14,6 +14,21 @@ function get_raids() {
     }
 }
 
+function get_raids_by_time() {
+    global $db;
+    $query = 'SELECT * FROM raid ORDER BY raidStart';
+    try {
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        $statement->closeCursor();
+        return $result;
+    } catch (PDOException $e) {
+        $error_message = $e->getMessage();
+        display_db_error($error_message);
+    }
+}
+
 function get_raid($raid_ID) {
     global $db;
     $query = 'SELECT *

@@ -7,19 +7,8 @@ require('../../model/raid_boss_db.php');
 require('../../model/boss_db.php');
 include('../../view/header_stats.php'); 
 
-$raids = get_raids();
+$raids = get_raids_by_time();
 $days = array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday');
-
-$raid_names = array();
-foreach ($days as $day) {
-    $raids_per_day = array();
-    foreach ($raids as $raid) {
-        if ($raid['raidDay'] == $day) {
-            array_push($raids_per_day, $raid['raidName']);
-        }
-    }
-    array_push($raid_names, $raids_per_day);
-}
 ?>
 
 <main>
@@ -38,18 +27,38 @@ foreach ($days as $day) {
                     <th><?php echo $raid['raidName']; ?></th>
                     <th>
                         <div class="popup-button">
-                            <button data-modal-target="#modal">
+                            <button data-modal-target="#raid<?php echo $raid['raidID']; ?>">
                                 <i class="fa fa-info-circle" style="font-size:25px;color:white;"></i>
                             </button>
                         </div>
-                        <div class="modal" id="modal">
+                        <div class="modal" id="raid<?php echo $raid['raidID']; ?>">
                             <div class="modal-header">
-                                <div class="title">
-                                    <?php echo $raid['raidName']; ?>
-                                </div>
-                            </div>
-                            <div class="modal-body">
                                 <?php echo $raid['raidName']; ?>
+                            </div>
+                            <?php 
+                                $bosses_ID = get_bosses_from_raid($raid['raidID']);
+                                $bosses = array();
+                                if (sizeof($bosses_ID) == 0) {
+                                    array_push($bosses,'<i>None</i>');
+                                } else {
+                                    foreach ($bosses_ID as $boss_ID) {
+                                        array_push($bosses, get_boss_name_from_id($boss_ID[0]).' ('.get_difficulty_name_from_id(get_boss($boss_ID[0])['difficultyID']).')');
+                                    }
+                                }
+                            ?>
+                            <div class="modal-body">
+                                <h3>TEAM</h3>
+                                <p><?php echo get_Name_from_ID($raid['teamID']); ?></p>
+                                <h3>START TIME</h3>
+                                <p><?php echo $raid['raidStart']; ?></p>
+                                <h3>END TIME</h3>
+                                <p><?php echo $raid['raidEnd']; ?></p>
+                                <h3>BOSSES</h3>
+                                <?php
+                                foreach ($bosses as $boss) {
+                                    echo '<p>',$boss,'</p>';
+                                }
+                                ?>
                             </div>
                         </div>
                         <div id="overlay"></div>
@@ -57,9 +66,6 @@ foreach ($days as $day) {
                 </tr>
                 <tr>
                     <td colspan="2"><?php echo $raid['raidStart'],' - ',$raid['raidEnd']; ?></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><?php echo 'Team: ',get_Name_from_ID($raid['teamID']); ?></td>
                 </tr>
             </table>
             <?php 
