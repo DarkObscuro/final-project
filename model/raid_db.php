@@ -112,4 +112,26 @@ function add_team_to_raid($team_ID, $raid_ID) {
         display_db_error($error_message);
     }
 }
+
+function get_Raid_Name_from_ID($raid_ID) {
+    global $db;
+    $query = 'SELECT raidName
+              FROM raid
+              WHERE raid_ID = :raid_ID';
+    if ($raid_ID == NULL) {
+        return '<i>None</i>';
+    } else {
+        try {
+            $statement = $db->prepare($query);
+            $statement->bindValue(':raid_ID', $raid_ID);
+            $statement->execute();
+            $result = $statement->fetch();
+            $statement->closeCursor();
+            return $result[0];
+        } catch (PDOException $e) {
+            $error_message = $e->getMessage();
+            display_db_error($error_message);
+        }
+    }
+}
 ?>

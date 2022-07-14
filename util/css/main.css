@@ -278,6 +278,10 @@ img {
     text-align: center;
 }
 
+.form-input input[type="time"] {
+    width: calc(100% - 5px);
+}
+
 .form-input input:-webkit-autofill, input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active{
@@ -372,3 +376,105 @@ input:-webkit-autofill:active{
 .Friday { grid-area: 1 / 5 / 2 / 6; }
 .Saturday { grid-area: 1 / 6 / 2 / 7; }
 .Sunday { grid-area: 1 / 7 / 2 / 8; }
+
+/* POPUP */
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+  
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+  
+/* Popup arrow */
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+  
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border: 1px solid white;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: #050505;
+    width: 500px;
+    max-width: 80%;
+}
+  
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+  
+.modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+}
+  
+.modal-header .title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.modal-body {
+    padding: 10px 15px;
+}
+  
+#overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .5);
+    pointer-events: none;
+}
+  
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.popup-button button {
+    width: 100%;
+    margin: 0;
+    border-radius: 5px;
+    border: none;
+    background: #5e0909; 
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.popup-button button:hover {
+    cursor: pointer;
+}
