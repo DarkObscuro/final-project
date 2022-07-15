@@ -2,7 +2,7 @@
 <main>
     <h1>Players</h1>
 
-    <div class="normal-table" style="overflow-x:auto;">
+    <div class="player-table" style="overflow-x:auto;">
         <!-- display a table of players -->
         <table class="players_table">
             <thead>

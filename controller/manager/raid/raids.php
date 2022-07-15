@@ -2,7 +2,7 @@
 <main>
     <h1>Raids</h1>
 
-    <div class="normal-table" style="overflow-x:auto;">
+    <div class="raid-table" style="overflow-x:auto;">
         <!-- display a table of raids -->
         <table>
             <thead>

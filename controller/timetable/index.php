@@ -12,6 +12,7 @@ $days = array('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'
 ?>
 
 <main>
+    <script defer src="../../util/js/script.js"></script>
     <h1><a class="site-logo" href="../../"><i class="fa fa-home" style="font-size:28px;color:white;"></i></a> Timetable</h1>
     <div class="grid-container">
         <?php 

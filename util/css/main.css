@@ -115,16 +115,16 @@ tr.active-row {
 }
 
 @media screen and (max-width: 600px) {
-    .normal-table table {
+    .player-table table {
       border: 0;
       width: 90%;
     }
   
-    .normal-table table caption {
+    .player-table table caption {
       font-size: 1.3em;
     }
     
-    .normal-table table thead {
+    .player-table table thead {
       border: none;
       clip: rect(0 0 0 0);
       height: 1px;
@@ -135,31 +135,81 @@ tr.active-row {
       width: 1px;
     }
     
-    .normal-table table tr {
+    .player-table table tr {
       border-bottom: 3px solid #ddd;
       display: block;
       margin-bottom: .625em;
     }
     
-    .normal-table table td {
+    .player-table table td {
       border-bottom: 1px solid #ddd;
       display: block;
       font-size: .8em;
       text-align: right;
     }
     
-    .normal-table table td::before {
+    .player-table table td::before {
       content: attr(data-label);
       float: left;
       font-weight: bold;
       text-transform: uppercase;
     }
     
-    .normal-table table td:last-child {
+    .player-table table td:last-child {
       border-bottom: 0;
     }
 
-    .normal-table img {
+    .player-table img {
+        margin: 0 0 0 90%;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .raid-table table {
+      border: 0;
+      width: 90%;
+    }
+  
+    .raid-table table caption {
+      font-size: 1.3em;
+    }
+    
+    .raid-table table thead {
+      border: none;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0;
+      position: absolute;
+      width: 1px;
+    }
+    
+    .raid-table table tr {
+      border-bottom: 3px solid #ddd;
+      display: block;
+      margin-bottom: .625em;
+    }
+    
+    .raid-table table td {
+      border-bottom: 1px solid #ddd;
+      display: block;
+      font-size: .8em;
+      text-align: right;
+    }
+    
+    .raid-table table td::before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    
+    .raid-table table td:last-child {
+      border-bottom: 0;
+    }
+
+    .raid-table img {
         margin: 0 0 0 90%;
     }
 }
