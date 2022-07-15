@@ -45,7 +45,7 @@ array_push($dataPoints3, array("label"=> 'Red Mage', "y"=> rand(8588, 9286), "co
 ?>
 
 <main>
-    <h1>Statistics</h1>
+    <h1><a class="site-logo" href="../../"><i class="fa fa-home" style="font-size:28px;color:white;"></i></a>           Statistics</h1>
     <script type="text/javascript" src="../../util/js/canvasjs.min.js"></script>
     <script type="text/javascript">
     
@@ -89,7 +89,7 @@ array_push($dataPoints3, array("label"=> 'Red Mage', "y"=> rand(8588, 9286), "co
 
         var chart3 = new CanvasJS.Chart("chartContainer3", {
             animationEnabled: true,
-            height:650,
+            height:640,
             theme: "dark1",
             title: {
                 text: "Damage Per Second Rankings",
@@ -119,10 +119,16 @@ array_push($dataPoints3, array("label"=> 'Red Mage', "y"=> rand(8588, 9286), "co
         chart3.render();
     }
     </script>
-    
-    <div class="chart_container" id="chartContainer1"></div>
-    <div class="chart_container" id="chartContainer3"></div>
-    <div class="chart_container" id="chartContainer2"></div>
-    <div class="chart_container"></div>
+    <div class="charts-container">
+        <div class="chart1">
+            <div class="chart_container_1" id="chartContainer1"></div>
+        </div>
+        <div class="chart2">
+            <div class="chart_container_2" id="chartContainer2"></div>
+        </div>
+        <div class="chart3">
+            <div class="chart_container_3" id="chartContainer3"></div>
+        </div>
+    </div>
 </main>
 <?php include '../../view/footer.php'; ?>

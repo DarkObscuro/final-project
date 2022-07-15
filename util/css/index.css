@@ -21,6 +21,17 @@ h1 {
     letter-spacing: 10px;
 }
 
+
+@media screen and (max-width:600px) {
+    body {
+      flex-direction: column;
+    }
+
+    h1 {
+        text-align: center;
+    }
+}
+
 ul { 
     position: relative; 
 }
@@ -80,4 +91,4 @@ ul li a:hover:before {
 
 ul li a:before { 
     background: #5e0909; 
-} 
+}

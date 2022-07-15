@@ -2,9 +2,10 @@
 <main>
     <h1>Players</h1>
 
-    <section>
+    <div class="normal-table" style="overflow-x:auto;">
         <!-- display a table of players -->
         <table class="players_table">
+            <thead>
             <tr>
                 <th>Job</th>
                 <th>Pseudo</th>
@@ -13,14 +14,16 @@
                 <th>FC</th>
                 <th>Delete Player</th>
             </tr>
+            </thead>
+            <tbody>
             <?php foreach ($players as $player) : ?>
             <tr>
-                <td><img src="../../image/<?php echo $player['playerJob']; ?>.png" alt="Job icon"></td>
-                <td><?php echo $player['playerPseudo']; ?></td>
-                <td><?php echo $player['playerRole']; ?></td>
-                <td><?php echo $player['playerTitle']; ?></td>
-                <td><?php echo $player['playerFC']; ?></td>
-                <td>
+                <td data-label="Job"><img src="../../image/<?php echo $player['playerJob']; ?>.png" alt="Job icon"></td>
+                <td data-label="Pseudo"><?php echo $player['playerPseudo']; ?></td>
+                <td data-label="Role"><?php echo $player['playerRole']; ?></td>
+                <td data-label="Title"><?php echo $player['playerTitle']; ?></td>
+                <td data-label="FC"><?php echo $player['playerFC']; ?></td>
+                <td data-label="Delete Player">
                     <form action="." method="post">
                     <input type="hidden" name="action"
                            value="delete_player">
@@ -43,7 +46,8 @@
                     </form>
                 </td> 
             </tr>
+            </tbody>
         </table>
-    </section>
+    </div>
 </main>
 <?php include '../../view/footer.php'; ?>

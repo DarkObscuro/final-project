@@ -2,9 +2,10 @@
 <main>
     <h1>Raids</h1>
 
-    <section>
+    <div class="normal-table" style="overflow-x:auto;">
         <!-- display a table of raids -->
         <table>
+            <thead>
             <tr>
                 <th>Name</th>
                 <th>Team</th>
@@ -18,11 +19,13 @@
                 <th>Remove Bosses</th>
                 <th>Delete Raid</th>
             </tr>
+            </thead>
+            <tbody>
             <?php foreach ($raids as $raid) : ?>
             <tr>
-                <td><?php echo $raid['raidName']; ?></td>
-                <td><?php echo get_Name_from_ID($raid['teamID']); ?></td>
-                <td>
+                <td data-label="Name"><?php echo $raid['raidName']; ?></td>
+                <td data-label="Team"><?php echo get_Name_from_ID($raid['teamID']); ?></td>
+                <td data-label="Assign Team">
                     <form action="." method="post">
                     <input type="hidden" name="action"
                            value="raid_team_add_form">
@@ -33,7 +36,7 @@
                         <i class="fa fa-plus" style="font-size:22px;color:white;"></i>
                     </button>
                     </form>
-                </td>
+                </td data-label="Remove Team">
                 <td>
                     <form action="." method="post">
                     <input type="hidden" name="action"
@@ -46,20 +49,26 @@
                     </button>
                     </form>
                 </td>
-                <td><?php echo $raid['raidDay']; ?></td>
-                <td><?php echo $raid['raidStart']; ?></td>
-                <td><?php echo $raid['raidEnd']; ?></td>
-                <td>
+                <td data-label="Day"><?php echo $raid['raidDay']; ?></td>
+                <td data-label="Start"><?php echo $raid['raidStart']; ?></td>
+                <td data-label="End"><?php echo $raid['raidEnd']; ?></td>
+                <td data-label="Bosses">
                     <?php 
                     $bosses_ID = get_bosses_from_raid($raid['raidID']);
-                    $bosses = [sizeof($bosses_ID)];
-                    for ($i=0; $i<sizeof($bosses_ID); $i++) {
-                        $bosses[$i] = get_boss_name_from_id($bosses_ID[$i][0]);
+                    $bosses = array();
+                    if (sizeof($bosses_ID) == 0) {
+                        array_push($bosses,'<i>None</i>');
+                    } else {
+                        foreach ($bosses_ID as $boss_ID) {
+                            array_push($bosses, get_boss_name_from_id($boss_ID[0]).' ('.get_difficulty_name_from_id(get_boss($boss_ID[0])['difficultyID']).')');
+                        }
                     }
-                    echo implode(", ",$bosses);
+                    foreach ($bosses as $boss) {
+                        echo '<p>',$boss,'</p>';
+                    }
                     ?>
                 </td>
-                <td><form action="." method="post">
+                <td data-label="Add Bosses"><form action="." method="post">
                     <input type="hidden" name="action"
                            value="raid_bosses_add_form">
                     <input type="hidden" name="raid_id"
@@ -68,7 +77,7 @@
                         <i class="fa fa-user-plus" style="font-size:42px;color:white;"></i>
                     </button>
                 </form></td>
-                <td><form action="." method="post">
+                <td data-label="Remove Bosses"><form action="." method="post">
                     <input type="hidden" name="action"
                            value="raid_bosses_remove_form">
                     <input type="hidden" name="raid_id"
@@ -77,7 +86,7 @@
                         <i class="fa fa-user-times" style="font-size:42px;color:white;"></i>
                     </button>
                 </form></td>
-                <td><form action="." method="post">
+                <td data-label="Delete Raid"><form action="." method="post">
                     <input type="hidden" name="action"
                            value="delete_raid">
                     <input type="hidden" name="raid_id"
@@ -98,8 +107,9 @@
                     </form>
                 </td> 
             </tr>
+            </tbody>
         </table>
         <br>
-    </section>
+    </div>
 </main>
 <?php include '../../view/footer.php'; ?>
