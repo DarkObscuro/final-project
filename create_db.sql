@@ -68,10 +68,20 @@ INSERT INTO difficulty VALUES
 (5, 'Savage'),
 (6, 'Ultimate');
 
-INSERT INTO boss (bossID, difficultyID, bossName) VALUES
-(1, 5, 'Alphascape V4'),
-(2, 6, 'Dragonsong Reprise'),
-(3, 4, 'Containment Bay S1T7'),
-(4, 1, 'The Navel'),
-(5, 2, 'The Bowl of Embers'),
-(6, 3, 'The Seat of Sacrifice');
+INSERT INTO boss (difficultyID, bossName) VALUES
+(1, 'Alphascape V1'),
+(1, 'Alphascape V2'),
+(1, 'Alphascape V3'),
+(1, 'Alphascape V4'),
+(5, 'Alphascape V1'),
+(5, 'Alphascape V2'),
+(5, 'Alphascape V3'),
+(5, 'Alphascape V4'),
+(6, 'The Unending Coil of Bahamut'),
+(6, "The Weapon's Refrain"),
+(6, 'The Epic of Alexander'),
+(6, 'Dragonsong Reprise'),
+(4, 'Containment Bay S1T7'),
+(1, 'The Navel'),
+(2, 'The Bowl of Embers'),
+(3, 'The Seat of Sacrifice');

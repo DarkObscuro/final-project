@@ -14,7 +14,7 @@
             <?php 
             foreach ($bosses as $boss) {
                 if (is_boss_in_raid($raid_ID, $boss['bossID'])) {
-                    echo "<option value=".$boss['bossID'].">".$boss['bossName']."</option>";
+                    echo "<option value=".$boss['bossID'].">".$boss['bossName']." (".get_difficulty_name_from_id(get_boss($boss['bossID'])['difficultyID']).")</option>";
                 }
             }
             ?> 
