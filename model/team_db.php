@@ -70,26 +70,6 @@ function add_team($team_Name) {
     }
 }
 
-function update_team($team_ID, $team_Name) {
-    global $db;
-    $query = 'UPDATE team
-              SET teamName = :team_Name,
-                  playerPseudo = :player_Pseudo
-              WHERE teamID = :team_ID';
-    try {
-        $statement = $db->prepare($query);
-        $statement->bindValue(':team_Name', $team_Name);
-        $statement->bindValue(':team_ID', $team_ID);
-        $row_count = $statement->execute();
-        $statement->closeCursor();
-        return $row_count;
-    } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
-    }
-}
-
-
 function remove_raid_ID_from_team($raid_ID) {
     global $db;
     $query = 'UPDATE raid SET teamID = NULL WHERE raidID = :raid_ID';

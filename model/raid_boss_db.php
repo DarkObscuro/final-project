@@ -65,25 +65,6 @@ function add_raid_boss($raid_ID, $boss_ID) {
     }
 }
 
-function update_raid_boss($raid_ID, $boss_ID) {
-    global $db;
-    $query = 'UPDATE raid_boss
-              SET raidID = :raid_ID,
-                  bossID = :boss_ID,
-              WHERE raidID = :raid_ID AND bossID = :boss_ID';
-    try {
-        $statement = $db->prepare($query);
-        $statement->bindValue(':raid_ID', $raid_ID);
-        $statement->bindValue(':boss_ID', $boss_ID);
-        $row_count = $statement->execute();
-        $statement->closeCursor();
-        return $row_count;
-    } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
-    }
-}
-
 function delete_raid_boss($raid_ID, $boss_ID) {
     global $db;
     $query = 'DELETE FROM raid_boss WHERE raidID = :raid_ID AND bossID = :boss_ID';

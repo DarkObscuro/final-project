@@ -10,16 +10,20 @@ include('../../view/header_stats.php');
 
 $jobs_count = get_player_count_by_job_list();
 $roles_count = get_player_count_by_role_list();
-$jobs_dps = get_player_job_list();
 
 $dataPoints1 = array();
-foreach($jobs_count as $job_count){
-    array_push($dataPoints1, array("label"=> $job_count[0], "y"=> $job_count[1], "color"=> $job_count[2]));
+if (!isset($jobs_count[-1])) {
+    foreach($jobs_count as $job_count){
+        array_push($dataPoints1, array("label"=> $job_count[0], "y"=> $job_count[1], "color"=> $job_count[2]));
+    }
 }
 
+
 $dataPoints2 = array();
-foreach($roles_count as $role_count){
-    array_push($dataPoints2, array("label"=> $role_count[0], "y"=> $role_count[1], "color"=> $role_count[2]));
+if (!isset($roles_count[-1])) {
+    foreach($roles_count as $role_count){
+        array_push($dataPoints2, array("label"=> $role_count[0], "y"=> $role_count[1], "color"=> $role_count[2]));
+    }
 }
 
 $dataPoints3 = array();

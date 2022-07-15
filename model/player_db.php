@@ -111,33 +111,6 @@ function add_player($player_Pseudo, $player_Job, $player_Title, $player_FC) {
     }
 }
 
-function update_player($player_ID, $team_ID, $player_Pseudo, $player_Job,
-$player_Title, $player_FC) {
-    global $db;
-    $query = 'UPDATE player
-              SET teamID = :team_ID,
-                  playerPseudo = :player_Pseudo,
-                  playerJob = :player_Job,
-                  playerTitle = :player_Title,
-                  playerFC = :player_FC
-              WHERE playerID = :player_ID';
-    try {
-        $statement = $db->prepare($query);
-        $statement->bindValue(':team_ID', $team_ID);
-        $statement->bindValue(':player_Pseudo', $player_Pseudo);
-        $statement->bindValue(':player_Job', $player_Job);
-        $statement->bindValue(':player_Title', $player_Title);
-        $statement->bindValue(':player_FC', $player_FC);
-        $statement->bindValue(':player_ID', $player_ID);
-        $row_count = $statement->execute();
-        $statement->closeCursor();
-        return $row_count;
-    } catch (PDOException $e) {
-        $error_message = $e->getMessage();
-        display_db_error($error_message);
-    }
-}
-
 function delete_player($player_ID) {
     global $db;
     $query = 'DELETE FROM player WHERE playerID = :player_ID';
